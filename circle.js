@@ -1,14 +1,22 @@
-class row {
+class Circ {
   constructor(x, y, r) {
     this.x = x
     this.y = y
     this.r = r
   }
 
-  show() {
-    c.fill(truePal[randomInt(0, truePal.length)])
+  show(col) {
+    c.fill(col)
     c.noStroke()
-    c.circle(this.x, this.y, this.r)
+    num = randomInt(1, 10)
+    cStackCircle(this.x, this.y, this.r, num, col)
+  }
+
+  showSquares(col) {
+    c.fill(col)
+    c.noStroke()
+    num = randomInt(1, 10)
+    cStackRect(this.x, this.y, this.r*1.5, this.r*1.5, num, col)
   }
 
   showShadow() {

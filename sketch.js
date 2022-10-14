@@ -8,10 +8,14 @@ function preload() {
 }
 
 //Declarations
-
+circs = []
 
 
 //Params
+nMode = randomIntEven(1, 2)
+expo = 0.5
+
+//Stack parameters
 colNums = [1, 3, 5, 7, 9, 11]
 minCols = 3
 maxCols = 3
@@ -19,10 +23,22 @@ rows = randomInt(3, 20)
 rotInc = randomVal(0, 3)
 rotNoiseScale = randomVal(0.01, 0.1)
 accentCol = 'red'//truePal[0]
-accentChance = 0.5
-sz = 4//randomInt(3, 20)
+accentChance = 0.75
+
+//Sampler parameters
+sz = 5//randomInt(3, 20)
+gap = 0.3
 noiseScaleX = randomVal(0.001, 0.001)
 noiseScaleY = randomVal(0.001, 0.001)
+
+//Circle packing parameters
+numCircs = 500
+padding = 10
+accentWigCircs = w/2//randomInt(200, w/2)
+noiseScaleWig = randomVal(0.001, 0.005)
+noiseScaleWidth = randomVal(0.001, 0.005)
+maxCircR = 1000
+minCircR = 10
 
 
 function setup() {
@@ -46,9 +62,14 @@ function draw() {
 
   //Sketch
 
-  //stack(h/2, 100, 0, 10)
-  fullStack(rows)
-  circles(rows)
+  if(nMode == 1) {
+    fullStack(rows)
+    circles(rows)
+  } else if(nMode == 2) {
+    cCirclePack()
+    showCircs()
+  }
+
   sampler()
 
   //debug c layer
