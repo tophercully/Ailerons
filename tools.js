@@ -75,11 +75,11 @@ function sampler() {
         light = map(lumMod, 0.5, 1, 0, 1)
         dark = 0
       }
-      trueCol = color(chroma(col).hex())
+      trueCol = chroma(col).rgba()
       xOff = randomVal(-off, off)
       yOff = randomVal(-off, off)
 
-      p.fill(trueCol)
+      p.fill(col)
       p.noStroke()
       nStroke = fxrand()
       if(nStroke < 0.001*sz) {
@@ -89,7 +89,8 @@ function sampler() {
         p.noStroke()
       }
       //p.circle(x+nX, y+nY, sz*0.75)
-      p.square(x+nX+xOff, y+nY+yOff, sz*0.99, randomInt(3, 6))
+
+      p.square(x+nX+xOff, y+nY+yOff, sz-gap, corner(), corner(), corner(), corner())
     }
   }
 }
@@ -101,7 +102,7 @@ function fullStack(numRows) {
     y = (stackHeight*i)+(stackHeight/2)
     rot += plusOrMin(rotInc)
     cols = colNums[randomInt(0, colNums.length)]
-    stack(y, randomVal(stackHeight, stackHeight*4), rot, 5)
+    stack(y, randomVal(stackHeight, stackHeight*4), rot, cols)
 
   }
 }
@@ -131,7 +132,7 @@ function stack(y, stackHeight, rot, cols) {
   accentDecider = fxrand()
   for(let i = 0; i < cols; i++) {
     //center accent color?
-    if(i == Math.floor(cols/2)) {
+    if(i == Math.floor(cols/2) && accentDecider < accentChance) {
       c.fill(accentCol)
       col = accentCol
     } else {
@@ -177,4 +178,80 @@ function cStackCircle(x, y, circleSize, dens, color) {
     c.circle(xMod, yMod, circleSize*sizeMod)
   }
   c.pop()
+}
+
+function corner() {
+  return sz*randomVal(0, 0.3)
+}
+
+function cCirclePack() {
+minR = minCircR
+maxR = maxCircR
+num = 0
+tries = 0
+  while(num < numCircs) {
+    //create a new circle object
+    thisC = new Circ(randomVal(0, w), randomVal(0, h), randomVal(minR, maxR))
+
+    //set overlap to default false
+    valid = true
+    for(let j = 0; j < circs.length; j++) {
+      //reference past circles
+      prevCirc = createVector(circs[j].x, circs[j].y)
+      thisCirc = createVector(thisC.x, thisC.y)
+      //calculate distance between circles
+      distance = thisCirc.dist(prevCirc)
+      minDist = ((thisC.r)/2+(circs[j].r)/2)+padding
+      //check if they overlap
+      if(distance < minDist) {
+        valid = false
+        break
+      } else {
+        valid = true
+      }
+    }
+    //if no overlaps then place circle
+    if(valid == true) {
+      circs[num] = thisC
+      num++
+    }
+    tries++
+    if(tries > 100000) {
+      break
+    }
+  }
+}
+
+function showCircs() {
+  for(let i = 0; i < circs.length; i++) {
+    wig = accentWigCircs
+    wiggle = map(noise(circs[i].y*noiseScaleWig), 0, 1, -wig, wig)
+    center = w/2 + wiggle
+    mod = map(noise(circs[i].y*noiseScaleWidth), 0, 1, 0, 200)
+    minX = center-mod
+    maxX = center+mod
+    if(circs[i].x < maxX && circs[i].x > minX) {
+      col = accentCol
+    } else {
+      col = truePal[randomInt(0, truePal.length)]
+    }
+    circs[i].show(col)
+  }
+}
+
+function showSquares() {
+  for(let i = 0; i < circs.length; i++) {
+    wig = accentWigCircs
+    wiggle = map(noise(circs[i].y*noiseScaleWig), 0, 1, -wig, wig)
+    center = w/2 + wiggle
+    mod = map(noise(circs[i].y*noiseScaleWidth), 0, 1, 0, 200)
+    minX = center-mod
+    maxX = center+mod
+    if(circs[i].x < maxX && circs[i].x > minX) {
+      col = accentCol
+    } else {
+      col = truePal[randomInt(0, truePal.length)]
+    }
+    circs[i].showSquares(col)
+  }
 }
