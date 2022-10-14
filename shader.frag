@@ -68,7 +68,7 @@ void main() {
   color = vec3(texP.r, texP.g, texP.b);
 
   //Draw margin
-  float margX = 0.05;
+  float margX = 0.025;
   float margY = margX*0.8;
   if(stB.x < margX || stB.x > 1.0-margX || stB.y < margY || stB.y > 1.0-margY) {
     color = vec3(bgc.r, bgc.g, bgc.b);

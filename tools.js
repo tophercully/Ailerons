@@ -3,9 +3,17 @@ function randomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(fxrand() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
+
+function randomIntEven(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function randomVal(min, max) {
   return fxrand() * (max - min) + min;
 }
+
 function map_range(value, low1, high1, low2, high2) {
   return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
 }
@@ -155,10 +163,11 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
   c.translate(x, y)
   xOff = randomVal(-rectWidth/2, rectWidth/2)
   yOff = randomVal(-rectHeight/2, rectHeight/2)
+
   for(let i = 0; i < dens; i++) {
-    sizeMod = map(i, 0, dens, 1, 0)
-    xMod = map(i, 0, dens, 0, xOff)
-    yMod = map(i, 0, dens, 0, yOff)
+    sizeMod = map(pow(i, expo), 0, pow(dens, expo), 1, 0)
+    xMod = map(pow(i, expo), 0, pow(dens, expo), 0, xOff)
+    yMod = map(pow(i, expo), 0, pow(dens, expo), 0, yOff)
     c.fill(chroma(col).darken(randomVal(0, 1)).hex())
     c.rect(xMod, yMod, rectWidth*sizeMod, rectHeight*sizeMod)
   }
@@ -170,10 +179,11 @@ function cStackCircle(x, y, circleSize, dens, color) {
   c.translate(x, y)
   xOff = randomVal(-circleSize/3, circleSize/3)
   yOff = randomVal(-circleSize/3, circleSize/3)
+
   for(let i = 0; i < dens; i++) {
-    sizeMod = map(i, 0, dens, 1, 0)
-    xMod = map(i, 0, dens, 0, xOff)
-    yMod = map(i, 0, dens, 0, yOff)
+    sizeMod = map(pow(i, expo), 0, pow(dens, expo), 1, 0)
+    xMod = map(pow(i, expo), 0, pow(dens, expo), 0, xOff)
+    yMod = map(pow(i, expo), 0, pow(dens, expo), 0, yOff)
     c.fill(chroma(col).darken(randomVal(0, 1)).hex())
     c.circle(xMod, yMod, circleSize*sizeMod)
   }

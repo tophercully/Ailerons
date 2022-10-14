@@ -12,7 +12,8 @@ circs = []
 
 
 //Params
-nMode = 2//randomInt(1, 2)
+nMode = randomIntEven(1, 2)
+expo = 0.5
 
 //Stack parameters
 colNums = [1, 3, 5, 7, 9, 11]
@@ -22,7 +23,7 @@ rows = randomInt(3, 20)
 rotInc = randomVal(0, 3)
 rotNoiseScale = randomVal(0.01, 0.1)
 accentCol = 'red'//truePal[0]
-accentChance = 0.5
+accentChance = 0.75
 
 //Sampler parameters
 sz = 5//randomInt(3, 20)
@@ -36,7 +37,7 @@ padding = 10
 accentWigCircs = w/2//randomInt(200, w/2)
 noiseScaleWig = randomVal(0.001, 0.005)
 noiseScaleWidth = randomVal(0.001, 0.005)
-maxCircR = 500
+maxCircR = 1000
 minCircR = 10
 
 
@@ -64,7 +65,7 @@ function draw() {
   if(nMode == 1) {
     fullStack(rows)
     circles(rows)
-  } else if( nMode == 2) {
+  } else if(nMode == 2) {
     cCirclePack()
     showCircs()
   }
