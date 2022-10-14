@@ -65,13 +65,21 @@ function sampler() {
     for(let x = 0; x < w; x+= sz) {
       nY = map(noise(x*noiseScaleY, y*noiseScaleY), 0, 1, -offset, offset)
       nX = map(noise(x*noiseScaleX, y*noiseScaleX), 0, 1, -offset, offset)
-      col = color(c.get(x, y))
+      col = c.get(x, y)
       // console.log(lum)
-
+      lumMod = fxrand()
+      if(lumMod < 0.5) {
+        dark = map(lumMod, 0.5, 0, 0, 1)
+        light = 0
+      } else {
+        light = map(lumMod, 0.5, 1, 0, 1)
+        dark = 0
+      }
+      trueCol = color(chroma(col).hex())
       xOff = randomVal(-off, off)
       yOff = randomVal(-off, off)
 
-      p.fill(col)
+      p.fill(trueCol)
       p.noStroke()
       nStroke = fxrand()
       if(nStroke < 0.001*sz) {
