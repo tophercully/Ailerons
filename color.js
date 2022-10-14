@@ -24,7 +24,7 @@ bgNames = [
   "Raisin Black",
 ];
 //Background color parameters
-bgNum = 7//randomInt(0, 9);
+bgNum = randomInt(0, 9);
 bgc = bgCols[bgNum];
 bgName = bgNames[bgNum];
 

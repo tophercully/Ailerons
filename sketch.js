@@ -14,31 +14,44 @@ function preload() {
 //Params
 colNums = [1, 3, 5, 7, 9, 11]
 minCols = 3
-maxCols = 7
+maxCols = 3
 rows = randomInt(3, 20)
-rotInc = 2.5//randomVal(0, 3)
+rotInc = randomVal(0, 3)
+rotNoiseScale = randomVal(0.01, 0.1)
+accentCol = truePal[0]
+sz = 4//randomInt(3, 20)
+noiseScaleX = randomVal(0.001, 0.001)
+noiseScaleY = randomVal(0.001, 0.001)
 
 
 function setup() {
   createCanvas(w, h, WEBGL);
   pixelDensity(2)
   p = createGraphics(w, h)
+  c = createGraphics(w, h)
   angleMode(DEGREES)
   p.angleMode(DEGREES)
+  c.angleMode(DEGREES)
   noLoop()
   p.noLoop()
+  c.noLoop()
 
 }
 
 function draw() {
   //Basic prep
   translate(-w/2, -h/2)
-  p.background(bgc)
+  c.background(bgc)
 
   //Sketch
 
   //stack(h/2, 100, 0, 10)
   fullStack(rows)
+  circles(rows)
+  sampler()
+
+  //debug c layer
+  //p.copy(c, 0, 0, w, h, 0, 0, w, h)
 
   //Post processing
   copy(p, 0, 0, w, h, 0, 0, w, h)
