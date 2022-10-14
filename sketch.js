@@ -16,13 +16,13 @@ nMode = randomIntEven(1, 2)
 expo = 0.5
 
 //Stack parameters
-colNums = [1, 3, 5, 7, 9, 11]
+colNums = [3, 5, 7, 9, 11]
 minCols = 3
 maxCols = 3
 rows = randomInt(3, 20)
 rotInc = randomVal(0, 3)
 rotNoiseScale = randomVal(0.01, 0.1)
-accentCol = 'red'//truePal[0]
+//accentCol = 'red'//truePal[0]
 accentChance = 0.75
 
 //Sampler parameters

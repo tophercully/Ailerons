@@ -36,6 +36,19 @@ if (calcBgLum > 0.5) {
   frameCol = 'white'; //white
 }
 
+const accentCols = [
+  'red', //red
+  "#1ea5e8", //ice-blue
+  "#d9479c", //white coffee
+  "#d64b00", //butter-white
+  "#5dadde", //white rose
+  "#ECECEE", //christmas white
+  "#1F201F", //retro black
+  "#212122", //ink black
+  "#1B1B1B", //eerie black
+  "#242124", //raisin black
+]
+
 //Palettes
 //Always include frameCol instead of black or white so our colors don't blend into bgc
 const monoCols = [
@@ -48,6 +61,72 @@ const monoCols = [
   "#495057",
   "#343a40",
   frameCol,
+  "#2A2930",
+];
+
+const monoColsRed = [
+  "#ffba08",
+  "#faa307",
+  "#f48c06",
+  "#e85d04",
+  "#dc2f02", //
+  "#d00000",
+  "#9d0208",
+  "#6a040f",
+  frameCol,
+  "#2A2930",
+];
+
+const monoColsGreen = [
+  "#10451d",
+  "#155d27",
+  "#1a7431",
+  "#208b3a",
+  "#25a244", //
+  "#2dc653",
+  "#4ad66d",
+  "#6ede8a",
+  frameCol,
+  "#2A2930",
+];
+
+const monoColsBlue = [
+  "#023e8a",
+  "#0077b6",
+  "#0096c7",
+  "#00b4d8",
+  "#48cae4", //
+  "#90e0ef",
+  "#ade8f4",
+  "#caf0f8",
+  frameCol,
+  "#2A2930",
+];
+
+const monoColsTan = [
+  "#EDC4B3",
+  "#E6B8A2",
+  "#DEAB90",
+  "#D69F7E",
+  "#CD9777", //
+  "#C38E70",
+  "#B07D62",
+  "#9D6B53",
+  frameCol,
+  "#8A5A44",
+];
+
+const blush = [
+  "#590d22",
+  "#800F2F",
+  "#A4133C",
+  "#C9184A",
+  "#FF4D6D", //
+  "#FF758F",
+  "#FF8FA3",
+  "#FFB3C1",
+  "#FFCCD5",
+  "#FFF0F3",
   "#2A2930",
 ];
 
@@ -172,7 +251,7 @@ const oilPastel = [
 
 const popper = ["#F5D365", "#E66C64", "#92BCC8", "#4F7C9A", frameCol];
 
-const pals = [source, shepard, toyBlocks, mcWoot, soft, jazzy, ceramic, oilPastel, mcNay, oKeefe, flowerMarket, oilPaint];
+const pals = [monoCols, monoColsRed, monoColsGreen, monoColsBlue, monoColsTan];
 
 const palNames = [
   "Source",
@@ -190,9 +269,10 @@ const palNames = [
 ];
 
 //Palette parameters
-palNum = randomInt(0, pals.length);
-pal = monoCols//pals[palNum];
+palNum = 4//randomInt(0, pals.length);
+pal = pals[palNum];
 palName = palNames[palNum];
+accentCol = accentCols[palNum]
 
 console.log(palName)
 
