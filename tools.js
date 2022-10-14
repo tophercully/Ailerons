@@ -102,7 +102,7 @@ function circles(numRows) {
   for(let i = 0; i < numRows; i++) {
     nCirc = fxrand()
     stackHeight = h/numRows
-    if(nCirc < 0.5) {
+    if(nCirc < 0.2) {
       c.fill(accentCol)
       col = accentCol
       c.noStroke()
@@ -120,7 +120,7 @@ function stack(y, stackHeight, rot, cols) {
   c.rotate(rot)
   c.translate(-w/2, -y)
   c.translate(0, y)
-
+  accentDecider = fxrand()
   for(let i = 0; i < cols; i++) {
     //center accent color?
     if(i == Math.floor(cols/2)) {
@@ -129,6 +129,7 @@ function stack(y, stackHeight, rot, cols) {
     } else {
       c.fill(truePal[randomInt(0, truePal.length)])
       col = truePal[randomInt(0, truePal.length)]
+      //col = '#252525'
     }
     c.noStroke()
     stackDens = randomInt(1, 10)

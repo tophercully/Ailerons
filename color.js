@@ -38,6 +38,19 @@ if (calcBgLum > 0.5) {
 
 //Palettes
 //Always include frameCol instead of black or white so our colors don't blend into bgc
+const monoCols = [
+  "#f8f9fa",
+  "#e9ecef",
+  "#dee2e6",
+  "#ced4da",
+  "#adb5bd", //
+  "#6c757d",
+  "#495057",
+  "#343a40",
+  frameCol,
+  "#2A2930",
+];
+
 const source = [
   "#A6C8CA",
   "#097857",
@@ -178,7 +191,7 @@ const palNames = [
 
 //Palette parameters
 palNum = randomInt(0, pals.length);
-pal = pals[palNum];
+pal = monoCols//pals[palNum];
 palName = palNames[palNum];
 
 console.log(palName)
