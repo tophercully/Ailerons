@@ -126,8 +126,9 @@ function circles(numRows) {
       x = randomVal(0, w)
       y = i*stackHeight
       c.push()
-      cStackCircle(x, y, randomVal(10, stackHeight*2), circDens, col)
-      c.pop
+      raised = randomInt(10, 50)
+      cStackCircle(x, y, randomVal(10, stackHeight*2), circDens, col, raised)
+      c.pop()
     }
   }
 }
@@ -143,17 +144,29 @@ function stack(y, stackHeight, rot, cols) {
 
   accentDecider = fxrand()
   for(let i = 0; i < cols; i++) {
+    x = i*stackWidth+(stackWidth/2)+randomInt(-mod/2, mod/2)
     //center accent color?
-    if(i == Math.floor(cols/2) && accentDecider < accentChance) {
-      c.fill(accentCol)
+    // if(i == Math.floor(cols/2) && accentDecider < accentChance) {
+    //   c.fill(accentCol)
+    //   col = accentCol
+    // } else {
+    //   c.fill(truePal[randomInt(0, truePal.length)])
+    //   col = truePal[randomInt(0, truePal.length)]
+    //   //col = '#252525'
+    // }
+    wig = accentWigCircs
+    wiggle = map(noise(y*noiseScaleWig), 0, 1, -wig, wig)
+    center = w/2 + wiggle
+    mod = map(noise(y*noiseScaleWidth), 0, 1, 0, 200)
+    minX = center-mod
+    maxX = center+mod
+    if(x < maxX && x > minX) {
       col = accentCol
     } else {
-      c.fill(truePal[randomInt(0, truePal.length)])
       col = truePal[randomInt(0, truePal.length)]
-      //col = '#252525'
     }
     c.noStroke()
-    x = i*stackWidth+(stackWidth/2)+randomInt(-mod/2, mod/2)
+
     cStackRect(x, y, stackWidth+mod, stackHeight, rectDens, col)
 
 
@@ -173,7 +186,7 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
 
   for(let i = 0; i < dens; i++) {
     offset = 0.03
-    dark = map(i, 0, dens, 3, 0) +randomVal(-offset, offset)
+    dark = map(i, 0, dens, contrast, 0) +randomVal(-offset, offset)
     sizeMod = map(pow(i, expo), 0, pow(dens, expo), 1, 0)
     xMod = map(pow(i, expo), 0, pow(dens, expo), 0, xOff)
     yMod = map(pow(i, expo), 0, pow(dens, expo), 0, yOff)
@@ -183,7 +196,7 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
   c.pop()
 }
 
-function cStackCircle(x, y, circleSize, dens, color) {
+function cStackCircle(x, y, circleSize, dens, color, raised) {
   satCheck = createVector(x, y)
   satDist = satCheck.dist(satCenter)
   sat = map(satDist, 0, satRadius, 0, satLevel)
@@ -191,10 +204,9 @@ function cStackCircle(x, y, circleSize, dens, color) {
   c.translate(x, y)
   xOff = map(xShadow, 0, 1, -circleSize/3, circleSize/3)//randomVal(-circleSize/3, circleSize/3)
   yOff = map(yShadow, 0, 1, -circleSize/3, circleSize/3)//randomVal(-circleSize/3, circleSize/3)
-  raised = randomInt(10, 100)
   for(let i = 0; i < dens; i++) {
     offset = 0//0.05
-    dark = map(i, 0, dens, 3, 0) +randomVal(-offset, offset)
+    dark = map(i, 0, dens, contrast, 0) +randomVal(-offset, offset)
     sizeMod = map(pow(i, expo), 0, pow(dens, expo), 1, 0)
     xMod = map(pow(i, expo), 0, pow(dens, expo), 0, xOff)
     yMod = map(pow(i, expo), 0, pow(dens, expo), 0, yOff)
@@ -249,8 +261,10 @@ tries = 0
 
     }
     tries++
-    if(tries > 500000) {
+    if(tries > 300000) {
+      console.log(tries)
       break
+
     }
   }
 }
@@ -268,7 +282,7 @@ function showCircs() {
     } else {
       col = truePal[randomInt(0, truePal.length)]
     }
-    circs[i].show(col)
+    circs[i].show(col, i)
   }
 }
 

@@ -42,8 +42,8 @@ const accentCols = [
   "#d9479c", //white coffee
   "#d64b00", //butter-white
   "#5dadde", //white rose
-  "#ECECEE", //christmas white
-  "#1F201F", //retro black
+  "#8fe388", //christmas white
+  "#FF731D", //retro black
   "#212122", //ink black
   "#1B1B1B", //eerie black
   "#242124", //raisin black
@@ -128,6 +128,17 @@ const blush = [
   "#FFCCD5",
   "#FFF0F3",
   "#2A2930",
+];
+
+const retro = [
+  "#FFF7E9",
+  "#5F9DF7",
+  "#1746A2",
+  "#2124EB",
+  "#7ABEDE", //
+  "#000552",
+  "#7943E6",
+  "#9B72F2",
 ];
 
 const source = [
@@ -251,7 +262,14 @@ const oilPastel = [
 
 const popper = ["#F5D365", "#E66C64", "#92BCC8", "#4F7C9A", frameCol];
 
-const pals = [monoCols, monoColsRed, monoColsGreen, monoColsBlue, monoColsTan];
+const pals = [
+  monoCols,
+  monoColsRed,
+  monoColsGreen,
+  monoColsBlue,
+  monoColsTan,
+  blush,
+  retro];
 
 const palNames = [
   "Source",

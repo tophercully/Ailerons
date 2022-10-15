@@ -13,26 +13,28 @@ circs = []
 
 //Params
 nMode = 1//randomIntEven(1, 2)
-expo = 4//randomVal(2, 3)
-satLevel = randomVal(1, 7)
-satRadius = w//randomInt(w*0.75, h)
+expo = randomVal(2, 4)
+satLevel = randomVal(2, 3)
+satRadius = randomInt(w*0.75, h)
 xShadow = fxrand()
 yShadow = fxrand()
+contrast = randomVal(2, 4)
 
 
 //Stack parameters
 colNums = [1, 3, 5, 7, 9, 11]
 minCols = 3
-maxCols = 3
-rows = randomInt(3, 20)
-rotInc = randomVal(0, 3)
-rotNoiseScale = 2//randomVal(0.01, 0.5)
+maxCols = 10
+rows = randomInt(3, 50)
+maxRot = map_range(rows, 3, 50, 3, 0.25)
+rotInc = randomVal(0, maxRot)
+rotNoiseScale = randomVal(0.01, 0.5)
 //accentCol = 'red'//truePal[0]
 accentChance = 0.75
 rectDens = 50
 
 //Sampler parameters
-sz = 2//randomInt(3, 20)
+sz = 5//randomInt(3, 20)
 gap = 0.3
 noiseScaleX = randomVal(0.001, 0.001)
 noiseScaleY = randomVal(0.001, 0.001)
@@ -40,10 +42,10 @@ noiseScaleY = randomVal(0.001, 0.001)
 //Circle packing parameters
 numCircs = 3000
 padding = 2
-accentWigCircs = w/2//randomInt(200, w/2)
-noiseScaleWig = randomVal(0.001, 0.005)
-noiseScaleWidth = randomVal(0.001, 0.005)
-maxCircR = 1000
+accentWigCircs = randomInt(200, w/2)
+noiseScaleWig = randomVal(0.001, 0.025)
+noiseScaleWidth = randomVal(0.01, 0.1)/rows
+maxCircR = randomInt(500, h)
 minCircR = 10
 circDens = 50
 
@@ -63,7 +65,7 @@ function setup() {
   p.willReadFrequently = true
   c.willReadFrequently = true
 
-  satCenter = createVector(randomInt(0, w), randomInt(0, h))
+  satCenter = createVector(randomInt(w*0.25, w*0.75), randomInt(0, h))
 }
 
 function draw() {
