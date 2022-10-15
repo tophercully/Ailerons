@@ -13,7 +13,9 @@ circs = []
 
 //Params
 nMode = randomIntEven(1, 2)
-expo = 0.5
+expo = 3
+satLevel = randomVal(1, 7)
+
 
 //Stack parameters
 colNums = [3, 5, 7, 9, 11]
@@ -26,14 +28,14 @@ rotNoiseScale = randomVal(0.01, 0.1)
 accentChance = 0.75
 
 //Sampler parameters
-sz = 5//randomInt(3, 20)
+sz = 2//randomInt(3, 20)
 gap = 0.3
 noiseScaleX = randomVal(0.001, 0.001)
 noiseScaleY = randomVal(0.001, 0.001)
 
 //Circle packing parameters
 numCircs = 500
-padding = 10
+padding = 0
 accentWigCircs = w/2//randomInt(200, w/2)
 noiseScaleWig = randomVal(0.001, 0.005)
 noiseScaleWidth = randomVal(0.001, 0.005)
@@ -52,7 +54,11 @@ function setup() {
   noLoop()
   p.noLoop()
   c.noLoop()
+  willReadFrequently = true
+  p.willReadFrequently = true
+  c.willReadFrequently = true
 
+  satCenter = createVector(randomInt(0, w), randomInt(0, h))
 }
 
 function draw() {
@@ -70,10 +76,10 @@ function draw() {
     showCircs()
   }
 
-  sampler()
+  //sampler()
 
   //debug c layer
-  //p.copy(c, 0, 0, w, h, 0, 0, w, h)
+  p.copy(c, 0, 0, w, h, 0, 0, w, h)
 
   //Post processing
   copy(p, 0, 0, w, h, 0, 0, w, h)
