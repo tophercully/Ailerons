@@ -317,11 +317,13 @@ function showSquares() {
 function gradLine(xa, ya, xb, yb, wt, xp) {
   start = createVector(xa, ya)
   end = createVector(xb, yb)
-  length = start.dist(end)/3
+  length = start.dist(end)/30
   midPt = randomVal(0, length)
   for(let i = 0; i < length/2; i++) {
     x = map(i, 0, length, start.x, end.x)
     y = map(i, 0, length, start.y, end.y)
+    x2 = map(i+1, 0, length, start.x, end.x)
+    y2 = map(i+1, 0, length, start.y, end.y)
 
     if(i < midPt) {
       wtMod = map(i, 0, midPt, 1, 0)
@@ -329,7 +331,7 @@ function gradLine(xa, ya, xb, yb, wt, xp) {
       wtMod = map(i, length, midPt, 1, 0)
     }
     c.strokeWeight(wt * wtMod)
-    c.square(x, y, wt*wtMod)
+    c.line(x, y, x2, y2)
   }
 
 }
