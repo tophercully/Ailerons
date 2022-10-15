@@ -12,20 +12,24 @@ circs = []
 
 
 //Params
-nMode = randomIntEven(1, 2)
-expo = 3
+nMode = 1//randomIntEven(1, 2)
+expo = 4//randomVal(2, 3)
 satLevel = randomVal(1, 7)
+satRadius = w//randomInt(w*0.75, h)
+xShadow = fxrand()
+yShadow = fxrand()
 
 
 //Stack parameters
-colNums = [3, 5, 7, 9, 11]
+colNums = [1, 3, 5, 7, 9, 11]
 minCols = 3
 maxCols = 3
 rows = randomInt(3, 20)
 rotInc = randomVal(0, 3)
-rotNoiseScale = randomVal(0.01, 0.1)
+rotNoiseScale = 2//randomVal(0.01, 0.5)
 //accentCol = 'red'//truePal[0]
 accentChance = 0.75
+rectDens = 50
 
 //Sampler parameters
 sz = 2//randomInt(3, 20)
@@ -34,13 +38,14 @@ noiseScaleX = randomVal(0.001, 0.001)
 noiseScaleY = randomVal(0.001, 0.001)
 
 //Circle packing parameters
-numCircs = 500
-padding = 0
+numCircs = 3000
+padding = 2
 accentWigCircs = w/2//randomInt(200, w/2)
 noiseScaleWig = randomVal(0.001, 0.005)
 noiseScaleWidth = randomVal(0.001, 0.005)
 maxCircR = 1000
 minCircR = 10
+circDens = 50
 
 
 function setup() {

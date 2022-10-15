@@ -54,18 +54,18 @@ void main() {
   st.y = 1.0 - st.y;
 
   //form noise
-  st.xy += (random(st.xy)*0.001)-0.0005;
+  st.xy += (random(st.xy)*0.001)-0.005;
   float warp = map(noise(seed+st.xy*5.0), 0.0, 1.0, -0.005, 0.005);
   //st.xy += warp;
 
   vec4 texP = texture2D(p, st);
 
   //color noise
-  float noiseGray = random(st.xy)*0.25;
+  float noiseGray = random(st.xy)*0.5;
 
   vec3 color = vec3(0.0);
   vec3 final = vec3(0.0);
-  color = vec3(texP.r, texP.g, texP.b);
+  color = vec3(texP.r+noiseGray, texP.g+noiseGray, texP.b+noiseGray);
 
   //Draw margin
   float margX = 0.025;
@@ -75,5 +75,5 @@ void main() {
   }
 
 
-  gl_FragColor = vec4(color+noiseGray, 1.0);
+  gl_FragColor = vec4(color, 1.0);
 }

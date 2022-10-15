@@ -9,14 +9,14 @@ class Circ {
   show(col) {
     c.fill(col)
     c.noStroke()
-    num = randomInt(1, 10)
+    num = 50//randomInt(1, 10)
     cStackCircle(this.x, this.y, this.r, num, col)
   }
 
   showSquares(col) {
     c.fill(col)
     c.noStroke()
-    num = randomInt(1, 10)
+    num = 50//randomInt(1, 10)
     cStackRect(this.x, this.y, this.r*1.5, this.r*1.5, num, col)
   }
 
