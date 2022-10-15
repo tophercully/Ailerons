@@ -109,7 +109,7 @@ function fullStack(numRows) {
     stackHeight = h/numRows
     y = (stackHeight*i)+(stackHeight/2)
     rot += plusOrMin(rotInc)
-    cols = colNums[randomInt(0, colNums.length)]
+    cols = randomInt(minCols, maxCols)
     stack(y, randomVal(stackHeight, stackHeight*4), rot, cols)
 
   }
@@ -169,7 +169,6 @@ function stack(y, stackHeight, rot, cols) {
 
     cStackRect(x, y, stackWidth+mod, stackHeight, rectDens, col)
 
-
   }
 
   c.pop()
@@ -192,7 +191,19 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
     yMod = map(pow(i, expo), 0, pow(dens, expo), 0, yOff)
     c.fill(chroma(col).desaturate(sat).darken(dark).hex())
     c.rect(xMod, yMod, rectWidth*sizeMod, rectHeight*sizeMod)
+    if(i == dens-1) {
+      numAccents = randomInt(0, 30)
+      for(let j = 0; j < numAccents; j++) {
+        accentY = randomVal(-rectHeight/2, rectHeight/2)
+        accentX = randomVal(-rectWidth/2, rectWidth/2)
+        c.stroke(randomInt(0, 255))
+        gradLine(-rectWidth/2, accentY, rectWidth/2, accentY, randomVal(1, 3), 0.5)
+        gradLine(accentX, -rectHeight/2, accentX, rectHeight/2, randomVal(1, 3), 0.5)
+      }
+
+    }
   }
+
   c.pop()
 }
 
@@ -301,4 +312,24 @@ function showSquares() {
     }
     circs[i].showSquares(col)
   }
+}
+
+function gradLine(xa, ya, xb, yb, wt, xp) {
+  start = createVector(xa, ya)
+  end = createVector(xb, yb)
+  length = start.dist(end)/3
+  midPt = randomVal(0, length)
+  for(let i = 0; i < length/2; i++) {
+    x = map(i, 0, length, start.x, end.x)
+    y = map(i, 0, length, start.y, end.y)
+
+    if(i < midPt) {
+      wtMod = map(i, 0, midPt, 1, 0)
+    } else if(i > midPt) {
+      wtMod = map(i, length, midPt, 1, 0)
+    }
+    c.strokeWeight(wt * wtMod)
+    c.square(x, y, wt*wtMod)
+  }
+
 }

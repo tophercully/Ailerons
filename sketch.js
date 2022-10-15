@@ -14,27 +14,28 @@ circs = []
 //Params
 nMode = 1//randomIntEven(1, 2)
 expo = randomVal(2, 4)
-satLevel = randomVal(2, 3)
-satRadius = randomInt(w*0.75, h)
+satLevel = 2//randomVal(2, 3)
+satRadius = randomInt(w, h)
 xShadow = fxrand()
 yShadow = fxrand()
 contrast = randomVal(2, 4)
+flipped = randomIntEven(0, 1)
 
 
 //Stack parameters
-colNums = [1, 3, 5, 7, 9, 11]
-minCols = 3
-maxCols = 10
-rows = randomInt(3, 50)
-maxRot = map_range(rows, 3, 50, 3, 0.25)
+colNums = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, ]
+minCols = 1
+maxCols = 50
+rows = randomInt(3, 30)
+maxRot = map_range(rows, 3, 30, 3, 0.25)
 rotInc = randomVal(0, maxRot)
 rotNoiseScale = randomVal(0.01, 0.5)
 //accentCol = 'red'//truePal[0]
 accentChance = 0.75
-rectDens = 50
+rectDens = 100
 
 //Sampler parameters
-sz = 5//randomInt(3, 20)
+sz = 20//randomInt(3, 20)
 gap = 0.3
 noiseScaleX = randomVal(0.001, 0.001)
 noiseScaleY = randomVal(0.001, 0.001)
@@ -72,6 +73,11 @@ function draw() {
   //Basic prep
   translate(-w/2, -h/2)
   c.background(bgc)
+  if(flipped == 1) {
+    p.translate(w/2, h/2)
+    p.rotate(180)
+    p.translate(-w/2, -h/2)
+  }
 
   //Sketch
 
@@ -86,7 +92,9 @@ function draw() {
   //sampler()
 
   //debug c layer
+  //gradLine(w/2, 0, w/2, h, 100, 0.5)
   p.copy(c, 0, 0, w, h, 0, 0, w, h)
+  //gradLine(w/2, 0, w/2, h, 100, 0.5)
 
   //Post processing
   copy(p, 0, 0, w, h, 0, 0, w, h)
