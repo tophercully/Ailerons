@@ -269,7 +269,7 @@ const palNames = [
 ];
 
 //Palette parameters
-palNum = 4//randomInt(0, pals.length);
+palNum = randomInt(0, pals.length);
 pal = pals[palNum];
 palName = palNames[palNum];
 accentCol = accentCols[palNum]

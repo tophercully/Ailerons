@@ -123,7 +123,9 @@ function circles(numRows) {
       c.fill(accentCol)
       col = accentCol
       c.noStroke()
-      cStackCircle(randomVal(0, w), i*stackHeight, randomVal(10, stackHeight*2), randomInt(1, 10), col)
+      x = randomVal(0, w)
+      y = i*stackHeight
+      cStackCircle(x, y, randomVal(10, stackHeight*2), randomInt(1, 10), col)
     }
   }
 }
@@ -136,7 +138,7 @@ function stack(y, stackHeight, rot, cols) {
   c.translate(w/2, y)
   c.rotate(rot)
   c.translate(-w/2, -y)
-  c.translate(0, y)
+
   accentDecider = fxrand()
   for(let i = 0; i < cols; i++) {
     //center accent color?
@@ -150,7 +152,8 @@ function stack(y, stackHeight, rot, cols) {
     }
     c.noStroke()
     stackDens = randomInt(1, 10)
-    cStackRect(i*stackWidth+(stackWidth/2)+randomInt(-mod/2, mod/2), 0, stackWidth+mod, stackHeight, stackDens, col)
+    x = i*stackWidth+(stackWidth/2)+randomInt(-mod/2, mod/2)
+    cStackRect(x, y, stackWidth+mod, stackHeight, stackDens, col)
 
 
   }
@@ -159,6 +162,9 @@ function stack(y, stackHeight, rot, cols) {
 }
 
 function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
+  satCheck = createVector(x, y)
+  satDist = satCheck.dist(satCenter)
+  sat = map(satDist, 0, w, 0, satLevel)
   c.push()
   c.translate(x, y)
   xOff = randomVal(-rectWidth/2, rectWidth/2)
@@ -168,13 +174,16 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
     sizeMod = map(pow(i, expo), 0, pow(dens, expo), 1, 0)
     xMod = map(pow(i, expo), 0, pow(dens, expo), 0, xOff)
     yMod = map(pow(i, expo), 0, pow(dens, expo), 0, yOff)
-    c.fill(chroma(col).darken(randomVal(0, 1)).hex())
+    c.fill(chroma(col).desaturate(sat).darken(randomVal(0, 1)).hex())
     c.rect(xMod, yMod, rectWidth*sizeMod, rectHeight*sizeMod)
   }
   c.pop()
 }
 
 function cStackCircle(x, y, circleSize, dens, color) {
+  satCheck = createVector(x, y)
+  satDist = satCheck.dist(satCenter)
+  sat = map(satDist, 0, w, 0, satLevel)
   c.push()
   c.translate(x, y)
   xOff = randomVal(-circleSize/3, circleSize/3)
@@ -184,7 +193,7 @@ function cStackCircle(x, y, circleSize, dens, color) {
     sizeMod = map(pow(i, expo), 0, pow(dens, expo), 1, 0)
     xMod = map(pow(i, expo), 0, pow(dens, expo), 0, xOff)
     yMod = map(pow(i, expo), 0, pow(dens, expo), 0, yOff)
-    c.fill(chroma(col).darken(randomVal(0, 1)).hex())
+    c.fill(chroma(col).desaturate(sat).darken(randomVal(0, 1)).hex())
     c.circle(xMod, yMod, circleSize*sizeMod)
   }
   c.pop()
