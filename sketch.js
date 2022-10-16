@@ -1,6 +1,6 @@
 w = 1200
 h = 1500
-marg = w*0.1
+marg = w*0.14
 
 let shade;
 function preload() {
@@ -13,14 +13,14 @@ circs = []
 
 //Params
 nMode = 1//randomIntEven(1, 2)
-expo = randomVal(2, 4)
-satLevel = randomVal(2, 3)
+expo = randomVal(3, 5)
+satLevel = 2//randomVal(2, 3)
 satRadius = randomInt(w, h)
 xShadow = fxrand()
 yShadow = fxrand()
 contrast = randomVal(3, 5)
 flipped = randomIntEven(0, 1)
-maxCent = randomInt(5, 50)
+maxCent = randomInt(5, 100)
 accExpo = 0.5
 
 
@@ -33,7 +33,7 @@ maxRot = map_range(rows, 3, 30, 3, 0.25)
 rotInc = randomVal(0, maxRot)
 rotNoiseScale = randomVal(0.01, 0.5)
 //accentCol = 'red'//truePal[0]
-accentChance = 0.75
+accentChance = 0.5
 rectDens = 100
 
 //Sampler parameters
@@ -96,7 +96,7 @@ function draw() {
   //debug c layer
   // p.stroke('red')
   // gradLine(w/2, 0, w/2, h, 100, 0.5)
-  p.copy(c, 0, 0, w, h, 0, 0, w, h)
+  p.copy(c, 0, 0, w, h, marg, marg, w-(marg*2), h-(marg*2))
   //gradLine(w/2, 0, w/2, h, 100, 0.5)
 
   //Post processing
