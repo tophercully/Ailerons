@@ -207,8 +207,8 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
         c.stroke(chroma(monoCols[randomInt(0, monoCols.length)]).alpha(alph).hex())
 
         //c.stroke(truePal[randomInt(0, truePal.length)])
-        gradLine(-rectWidth/2, accentY, rectWidth/2, accentY, randomVal(0.25, 1), accExpo)
-        gradLine(accentX, -rectHeight/2, accentX, rectHeight/2, randomVal(0.25, 1), accExpo)
+        gradLine(-rectWidth/2, accentY, rectWidth/2, accentY, randomVal(0.25, 1), randomVal(0.5, 4))
+        gradLine(accentX, -rectHeight/2, accentX, rectHeight/2, randomVal(0.25, 1), randomVal(0.5, 4))
       }
 
     }
@@ -329,18 +329,16 @@ function gradLine(xa, ya, xb, yb, wt, xp) {
   end = createVector(xb, yb)
   length = start.dist(end)/50
   midPt = randomVal(0, length)
-  scale = randomInt(20, 50)
+  scale = 360//randomInt(20, 50)
   for(let i = 0; i < length; i++) {
     x = map(i, 0, length, start.x, end.x)
     y = map(i, 0, length, start.y, end.y)
     x2 = map(i+1, 0, length, start.x, end.x)
     y2 = map(i+1, 0, length, start.y, end.y)
-
-
-    wtMod = map(sin((i*scale)+(midPt*scale)), -1, 1, -1, 1)
-
-
-    c.strokeWeight(wt * wtMod)
+    sineMidPt = map(midPt, 0, length, 0, 360)
+    sineI = map(i, 0, length, 0, 360) + sineMidPt
+    wtMod = map(sin((sineI+sineMidPt)*xp), -1, 1, 0, wt)
+    c.strokeWeight(wtMod)
     c.line(x, y, x2, y2)
   }
 

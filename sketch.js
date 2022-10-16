@@ -75,22 +75,6 @@ function draw() {
   //Basic prep
   translate(-w/2, -h/2)
   c.background(bgc)
-  // if(flipped == 1) {
-  //   c.translate(w/2, h/2)
-  //   c.rotate(180)
-  //   c.translate(-w/2, -h/2)
-  // } else if(flipped == 2) {
-  //   c.translate(w/2, h/2)
-  //   cRot = 90
-  //   c.rotate(90)
-  //   c.scale(1.3)
-  //   c.translate(-w/2, -h/2)
-  // } else if(flipped == 3) {
-  //   c.translate(w/2, h/2)
-  //   c.rotate(-90)
-  //   c.scale(1.3)
-  //   c.translate(-w/2, -h/2)
-  // }
   cRot = randomInt(0, 360)
   cScl = map(sin(cRot/4), -1, 1, 1, 1.75)
   c.translate(w/2, h/2)
@@ -99,21 +83,13 @@ function draw() {
     c.translate(-w/2, -h/2)
 
   //Sketch
-
-  if(nMode == 1) {
-    fullStack(rows)
-    circles(rows)
-  } else if(nMode == 2) {
-    cCirclePack()
-    showCircs()
-  }
-
-  //sampler()
+  fullStack(rows)
+  circles(rows)
 
   //debug c layer
   // p.stroke('red')
-  // gradLine(w/2, 0, w/2, h, 100, 0.5)
-  p.copy(c, 0, 0, w, h, marg, marg, w-(marg*2), h-(marg*2))
+  // gradLine(w/2, 0, w/2, h, 100, randomVal(0.25, 4))
+  p.copy(c, 0, 0, w, h, Math.floor(marg), Math.floor(marg), Math.floor(w-(marg*2)), Math.floor(h-(marg*2)))
   //gradLine(w/2, 0, w/2, h, 100, 0.5)
 
   //Post processing
