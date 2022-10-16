@@ -16,8 +16,10 @@ nMode = 1//randomIntEven(1, 2)
 expo = randomVal(3, 5)
 satLevel = randomVal(1, 2)
 satRadius = randomInt(w, h)
+lumLevel = 2.5
+lumRadius = randomInt(w, h)
 xShadow = fxrand()
-yShadow = fxrand()
+yShadow = fxrand()*0.5
 contrast = randomVal(3, 5)
 flipped = randomIntEven(0, 3)
 maxCent = randomInt(5, 100)
@@ -69,13 +71,14 @@ function setup() {
   c.willReadFrequently = true
 
   satCenter = createVector(randomInt(w*0.25, w*0.75), randomInt(0, h))
+  lumCenter = createVector(map(xShadow, 0, 1, 0, w), map(yShadow, 0, 1, 0, h))
 }
 
 function draw() {
   //Basic prep
   translate(-w/2, -h/2)
   c.background(bgc)
-  cRot = randomInt(0, 360)
+  cRot = 45//randomInt(0, 360)
   cScl = map(sin(cRot/4), -1, 1, 1, 1.75)
   c.translate(w/2, h/2)
     c.rotate(cRot)
@@ -93,7 +96,6 @@ function draw() {
   // p.stroke('red')
   // gradLine(w/2, 0, w/2, h, 100, randomVal(0.25, 4))
   p.copy(c, 0, 0, w, h, Math.floor(marg), Math.floor(marg), Math.floor(w-(marg*2)), Math.floor(h-(marg*2)))
-  //gradLine(w/2, 0, w/2, h, 100, 0.5)
 
   //Post processing
   copy(p, 0, 0, w, h, 0, 0, w, h)
