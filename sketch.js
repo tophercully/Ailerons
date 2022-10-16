@@ -86,6 +86,9 @@ function draw() {
   fullStack(rows)
   circles(rows)
 
+  // cCirclePack()
+  // showSquares()
+
   //debug c layer
   // p.stroke('red')
   // gradLine(w/2, 0, w/2, h, 100, randomVal(0.25, 4))

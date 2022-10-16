@@ -197,7 +197,8 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
     } else {
       c.noStroke()
     }
-    c.rect(xMod, yMod, rectWidth*sizeMod, rectHeight*sizeMod)
+    curve = map(i, 0, dens, 0, rectHeight/5)
+    c.rect(xMod, yMod, rectWidth*sizeMod, rectHeight*sizeMod, curve, curve, curve, curve)
     if(i == dens-1) {
       numAccents = randomInt(0, maxCent)
       for(let j = 0; j < numAccents; j++) {

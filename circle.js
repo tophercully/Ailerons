@@ -20,7 +20,7 @@ class Circ {
     c.fill(col)
     c.noStroke()
     num = 50//randomInt(1, 10)
-    cStackRect(this.x, this.y, this.r*1.5, this.r*1.5, num, col)
+    cStackRect(this.x, this.y, this.r, this.r, num, col)
   }
 
   showShadow() {
