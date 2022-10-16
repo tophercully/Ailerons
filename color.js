@@ -51,7 +51,6 @@ const blueComps = [
   'red',
   "#d64b00",
   "#FF731D",
-  "#ffba08",
 ]
 
 const redComps = [

@@ -127,7 +127,7 @@ function circles(numRows) {
       y = i*stackHeight
       c.push()
       raised = randomInt(10, 50)
-      cStackCircle(x, y, randomVal(10, stackHeight*2), circDens, col, raised)
+      cStackCircle(x, y, randomVal(10, 300), circDens, col, raised)
       c.pop()
     }
   }
