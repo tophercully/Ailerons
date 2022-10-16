@@ -14,7 +14,7 @@ circs = []
 //Params
 nMode = 1//randomIntEven(1, 2)
 expo = randomVal(3, 5)
-satLevel = 2//randomVal(2, 3)
+satLevel = randomVal(1, 2)
 satRadius = randomInt(w, h)
 xShadow = fxrand()
 yShadow = fxrand()
@@ -91,8 +91,8 @@ function draw() {
   //   c.scale(1.3)
   //   c.translate(-w/2, -h/2)
   // }
-  cRot = randomInt(0, 90) * randomInt(1, 4)
-  cScl = map(cRot, 0, 90, 1, 2)
+  cRot = randomInt(0, 360)
+  cScl = map(sin(cRot/4), -1, 1, 1, 1.75)
   c.translate(w/2, h/2)
     c.rotate(cRot)
     c.scale(cScl)
