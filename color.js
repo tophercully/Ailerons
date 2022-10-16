@@ -68,11 +68,11 @@ const purpleComps = [
 ]
 
 const monoComps = [
-  'red', //red
-  "#1ea5e8", //ice-blue
-  "#FF731D", //retro black
-  "#005BDA", //ink black
-  '#058c42'
+  'red', //Crimson
+  "#1ea5e8", //Ice-blue
+  "#FF731D", //Tangerine
+  "#005BDA", //Ultramarine
+  '#058c42', // Forest
 ]
 //Palettes
 //Always include frameCol instead of black or white so our colors don't blend into bgc
@@ -192,7 +192,7 @@ const palNames = [
 ];
 
 //Palette parameters
-palNum = 0//randomInt(0, pals.length);
+palNum = randomInt(0, pals.length);
 pal = pals[palNum];
 palName = palNames[palNum];
 if(palNum == 0) {
