@@ -1,6 +1,6 @@
 w = 1200
 h = 1500
-marg = w*0.14
+marg = w*0.119
 
 let shade;
 function preload() {
@@ -19,7 +19,7 @@ satRadius = randomInt(w, h)
 xShadow = fxrand()
 yShadow = fxrand()
 contrast = randomVal(3, 5)
-flipped = randomIntEven(0, 1)
+flipped = randomIntEven(0, 3)
 maxCent = randomInt(5, 100)
 accExpo = 0.5
 
@@ -28,9 +28,9 @@ accExpo = 0.5
 colNums = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, ]
 minCols = 1
 maxCols = 50
-rows = 50//randomInt(3, 30)
-maxRot = map_range(rows, 3, 30, 3, 0.25)
-rotInc = randomVal(0, maxRot)
+rows = randomInt(3, 40)
+maxRot = map_range(rows, 3, 40, 3, 0.25)
+rotInc = maxRot//randomVal(0, maxRot)
 rotNoiseScale = randomVal(0.01, 0.5)
 //accentCol = 'red'//truePal[0]
 accentChance = 0.5
@@ -75,11 +75,28 @@ function draw() {
   //Basic prep
   translate(-w/2, -h/2)
   c.background(bgc)
-  if(flipped == 1) {
-    p.translate(w/2, h/2)
-    p.rotate(180)
-    p.translate(-w/2, -h/2)
-  }
+  // if(flipped == 1) {
+  //   c.translate(w/2, h/2)
+  //   c.rotate(180)
+  //   c.translate(-w/2, -h/2)
+  // } else if(flipped == 2) {
+  //   c.translate(w/2, h/2)
+  //   cRot = 90
+  //   c.rotate(90)
+  //   c.scale(1.3)
+  //   c.translate(-w/2, -h/2)
+  // } else if(flipped == 3) {
+  //   c.translate(w/2, h/2)
+  //   c.rotate(-90)
+  //   c.scale(1.3)
+  //   c.translate(-w/2, -h/2)
+  // }
+  cRot = randomInt(0, 90) * randomInt(1, 4)
+  cScl = map(cRot, 0, 90, 1, 2)
+  c.translate(w/2, h/2)
+    c.rotate(cRot)
+    c.scale(cScl)
+    c.translate(-w/2, -h/2)
 
   //Sketch
 
