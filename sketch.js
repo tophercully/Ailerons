@@ -14,12 +14,14 @@ circs = []
 //Params
 nMode = 1//randomIntEven(1, 2)
 expo = randomVal(2, 4)
-satLevel = 2//randomVal(2, 3)
+satLevel = randomVal(2, 3)
 satRadius = randomInt(w, h)
 xShadow = fxrand()
 yShadow = fxrand()
-contrast = randomVal(2, 4)
+contrast = randomVal(3, 5)
 flipped = randomIntEven(0, 1)
+maxCent = randomInt(5, 50)
+accExpo = 0.5
 
 
 //Stack parameters
@@ -92,7 +94,8 @@ function draw() {
   //sampler()
 
   //debug c layer
-  //gradLine(w/2, 0, w/2, h, 100, 0.5)
+  // p.stroke('red')
+  // gradLine(w/2, 0, w/2, h, 100, 0.5)
   p.copy(c, 0, 0, w, h, 0, 0, w, h)
   //gradLine(w/2, 0, w/2, h, 100, 0.5)
 

@@ -61,14 +61,14 @@ void main() {
   vec4 texP = texture2D(p, st);
 
   //color noise
-  float noiseGray = random(st.xy)*0.5;
+  float noiseGray = random(st.xy)*0.4;
 
   vec3 color = vec3(0.0);
   vec3 final = vec3(0.0);
   color = vec3(texP.r+noiseGray, texP.g+noiseGray, texP.b+noiseGray);
 
   //Draw margin
-  float margX = 0.025;
+  float margX = 0.03;
   float margY = margX*0.8;
   if(stB.x < margX || stB.x > 1.0-margX || stB.y < margY || stB.y > 1.0-margY) {
     color = vec3(bgc.r+(noiseGray*0.25), bgc.g+(noiseGray*0.25), bgc.b+(noiseGray*0.25));

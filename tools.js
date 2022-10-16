@@ -110,7 +110,7 @@ function fullStack(numRows) {
     y = (stackHeight*i)+(stackHeight/2)
     rot += plusOrMin(rotInc)
     cols = randomInt(minCols, maxCols)
-    stack(y, randomVal(stackHeight, stackHeight*4), rot, cols)
+    stack(y, randomVal(stackHeight, stackHeight*10), rot, cols)
 
   }
 }
@@ -189,16 +189,26 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
     sizeMod = map(pow(i, expo), 0, pow(dens, expo), 1, 0)
     xMod = map(pow(i, expo), 0, pow(dens, expo), 0, xOff)
     yMod = map(pow(i, expo), 0, pow(dens, expo), 0, yOff)
-    c.fill(chroma(col).desaturate(sat).darken(dark).hex())
+    trueCol = chroma(col).desaturate(sat).darken(dark).hex()
+    c.fill(trueCol)
+    if(i == 0) {
+      c.stroke('black')
+      c.strokeWeight(randomVal(1, 5))
+    } else {
+      c.noStroke()
+    }
     c.rect(xMod, yMod, rectWidth*sizeMod, rectHeight*sizeMod)
     if(i == dens-1) {
-      numAccents = randomInt(0, 30)
+      numAccents = randomInt(0, maxCent)
       for(let j = 0; j < numAccents; j++) {
         accentY = randomVal(-rectHeight/2, rectHeight/2)
         accentX = randomVal(-rectWidth/2, rectWidth/2)
-        c.stroke(randomInt(0, 255))
-        gradLine(-rectWidth/2, accentY, rectWidth/2, accentY, randomVal(1, 3), 0.5)
-        gradLine(accentX, -rectHeight/2, accentX, rectHeight/2, randomVal(1, 3), 0.5)
+        alph = randomVal(0.2, 0.6)
+        c.stroke(chroma(monoCols[randomInt(0, monoCols.length)]).alpha(alph).hex())
+
+        //c.stroke(truePal[randomInt(0, truePal.length)])
+        gradLine(-rectWidth/2, accentY, rectWidth/2, accentY, randomVal(0.25, 1), accExpo)
+        gradLine(accentX, -rectHeight/2, accentX, rectHeight/2, randomVal(0.25, 1), accExpo)
       }
 
     }
@@ -317,19 +327,19 @@ function showSquares() {
 function gradLine(xa, ya, xb, yb, wt, xp) {
   start = createVector(xa, ya)
   end = createVector(xb, yb)
-  length = start.dist(end)/30
+  length = start.dist(end)/50
   midPt = randomVal(0, length)
-  for(let i = 0; i < length/2; i++) {
+  scale = randomInt(20, 50)
+  for(let i = 0; i < length; i++) {
     x = map(i, 0, length, start.x, end.x)
     y = map(i, 0, length, start.y, end.y)
     x2 = map(i+1, 0, length, start.x, end.x)
     y2 = map(i+1, 0, length, start.y, end.y)
 
-    if(i < midPt) {
-      wtMod = map(i, 0, midPt, 1, 0)
-    } else if(i > midPt) {
-      wtMod = map(i, length, midPt, 1, 0)
-    }
+
+    wtMod = map(sin((i*scale)+(midPt*scale)), -1, 1, -1, 1)
+
+
     c.strokeWeight(wt * wtMod)
     c.line(x, y, x2, y2)
   }

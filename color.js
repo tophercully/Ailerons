@@ -44,11 +44,37 @@ const accentCols = [
   "#5dadde", //white rose
   "#8fe388", //christmas white
   "#FF731D", //retro black
-  "#212122", //ink black
-  "#1B1B1B", //eerie black
-  "#242124", //raisin black
+  "#005BDA", //ink black
 ]
 
+const blueComps = [
+  'red',
+  "#d64b00",
+  "#FF731D",
+  "#ffba08",
+]
+
+const redComps = [
+  "#1ea5e8",
+  "#5dadde",
+]
+
+const greenComps = [
+  "#d9479c",
+]
+
+const purpleComps = [
+  //"#8fe388",
+  '#058c42'
+]
+
+const monoComps = [
+  'red', //red
+  "#1ea5e8", //ice-blue
+  "#FF731D", //retro black
+  "#005BDA", //ink black
+  '#058c42'
+]
 //Palettes
 //Always include frameCol instead of black or white so our colors don't blend into bgc
 const monoCols = [
@@ -141,127 +167,6 @@ const retro = [
   "#9B72F2",
 ];
 
-const source = [
-  "#A6C8CA",
-  "#097857",
-  "#F1E8D9",
-  "#E3CE61",
-  "#E35A7E",
-  frameCol,
-  "#EE692A",
-  "#BFCCD4",
-  "#217F96",
-  "#EBD5D7",
-];
-
-const shepard = ["#3D5A80", "#98C1D9", "#E0FBFC", "#FF4D21", "#293241", frameCol];
-
-const toyBlocks = ["#EBB701", "#EA3F23", "#00A2C8", frameCol, "#EAEAEA"];
-
-const mcWoot = ["#ED6A5A", "#636CCE", "#DFB2F4", "#50B386", "#55D6C2", frameCol];
-
-const soft = [
-  "#F94144",
-  "#F3722C",
-  "#F8961E",
-  "#F9844A",
-  "#F9C74F",
-  "#90BE6D",
-  "#43AA8B",
-  "#4D908E",
-  "#577590",
-  "#277DA1",
-  frameCol,
-  "white",
-];
-
-const jazzy = [
-  frameCol,
-  "#005f73",
-  "#0a9396",
-  "#94d2bd",
-  "#e9d8a6",
-  "#ee9b00",
-  "#ca6702",
-  "#bb3e03",
-  "#ae2012",
-  "#9b2226",
-];
-
-const ceramic = [
-  "#5B476C",
-  "#3581AA",
-  "#A54B49",
-  "#CED8D3",
-  "#72BC9C",
-  "#D49B8A",
-  "#0096C7",
-  frameCol,
-];
-
-const oilPastel = [
- '#EF2167',
- '#B8DEEE',
- '#F7E1F1',
- '#2B6C71',
- '#FBFAF6',
- '#050E13',
- '#B6C3BA',
- '#EF7F6B'
-]
-
- const mcNay = [
- '#87966B',
- '#D4816F',
- '#617E94',
- '#DAC3B5',
- '#B8C1D0',
- '#BC7B58',
- '#8B8279',
-]
-
- const oKeefe = [
- '#4F4D5C',
- '#E4CDB3',
- '#833828',
- '#B27362',
- '#D7B4A8',
- '#DBAF64',
- '#9D5F00',
- '#B9BAAB',
- '#414A37',
- '#838D7F',
-]
-
- const flowerMarket = [
- '#4F4D5C',
- '#E4CDB3',
- '#833828',
- '#B27362',
- '#D7B4A8',
- '#DBAF64',
- '#9D5F00',
- '#B9BAAB',
- '#414A37',
- '#838D7F',
-]
-
- const oilPaint = [
- '#844E93',
- '#B197C8',
- '#416368',
- '#3B3F42',
- '#69919B',
- '#90774C',
- '#ECEDE7',
-]
-
- const seaFoam = [
- "#22577a", "#38a3a5", "#57cc99", "#80ed99", "#c7f9cc", "#f2f9e8", "#f9f9f9"
-] //credit Wouter Missler
-
-const popper = ["#F5D365", "#E66C64", "#92BCC8", "#4F7C9A", frameCol];
-
 const pals = [
   monoCols,
   monoColsRed,
@@ -269,7 +174,8 @@ const pals = [
   monoColsBlue,
   monoColsTan,
   blush,
-  retro];
+  retro
+];
 
 const palNames = [
   "Source",
@@ -290,7 +196,20 @@ const palNames = [
 palNum = randomInt(0, pals.length);
 pal = pals[palNum];
 palName = palNames[palNum];
-accentCol = accentCols[palNum]
+if(palNum == 0) {
+  accentCol = monoComps[randomInt(0, monoComps.length)]
+} else if(palNum == 1 || palNum == 4) {
+  accentCol = redComps[randomInt(0, redComps.length)]
+} else if(palNum == 2) {
+  accentCol = greenComps[randomInt(0, greenComps.length)]
+} else if(palNum == 3 || palNum == 4) {
+  accentCol = blueComps[randomInt(0, blueComps.length)]
+} else if(palNum == 5) {
+  accentCol = purpleComps[randomInt(0, greenComps.length)]
+} else if(palNum == 6) {
+  accentCol = "#FF731D"
+}
+
 
 console.log(palName)
 
