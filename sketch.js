@@ -55,6 +55,11 @@ maxCircR = randomInt(500, h)
 minCircR = 10
 circDens = 50
 
+window.$fxhashFeatures = {
+  "Palette": palName,
+  "Contrast": Math.round(map_range(contrast, 5, 8, 1, 10)),
+  "Diffusion": Math.round(map_range(expo, 7, 3, 0, 10))
+}
 
 function setup() {
   createCanvas(w, h, WEBGL);
@@ -80,7 +85,7 @@ function draw() {
   translate(-w/2, -h/2)
   c.background(bgc)
   cRot = randomInt(0, 360)
-  cScl = map(sin(cRot/4), -1, 1, 1, 1.9)
+  cScl = map(sin(cRot/4), -1, 1, 1, 1.9)//1.9
   p.translate(w/2, h/2)
     p.rotate(cRot)
     p.scale(cScl)
