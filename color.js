@@ -220,7 +220,7 @@ prePal = pals[palNum];
 palName = palNames[palNum];
 if(palNum == 0) {
   //MonoChrome
-  n = 4
+  n = 5
   accentCol = prePal[randomInt(0, n-1)]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 1) {
