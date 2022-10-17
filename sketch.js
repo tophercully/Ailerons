@@ -12,14 +12,14 @@ circs = []
 
 
 //Params
-expo = randomVal(3, 5)
+expo = 5//randomVal(3, 5)
 satLevel = 1//randomVal(1, 2)
 satRadius = randomInt(w*2, h)
 lumLevel = randomVal(1, 2)
 lumRadius = randomInt(w, h)
 xShadow = fxrand()
-yShadow = fxrand()
-contrast = map_range(expo, 3, 5, 6, 4)//3//randomVal(3, 8)
+yShadow = fxrand()*0.5
+contrast = randomVal(5, 8)
 flipped = randomIntEven(0, 3)
 maxCent = randomInt(5, 100)
 accExpo = 0.5
