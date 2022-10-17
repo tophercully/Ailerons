@@ -127,7 +127,7 @@ function circles(numRows) {
       y = i*stackHeight
       c.push()
       raised = randomInt(10, 400)
-      cStackCircle(x, y, randomVal(10, 150), circDens, col, raised)
+      //cStackCircle(x, y, randomVal(10, 150), circDens, col, raised)
       c.pop()
     }
   }
@@ -297,11 +297,9 @@ function showCircs() {
     mod = map(noise(circs[i].y*noiseScaleWidth), 0, 1, 0, 200)
     minX = center-mod
     maxX = center+mod
-    if(circs[i].x < maxX && circs[i].x > minX) {
-      col = accentCol
-    } else {
-      col = truePal[randomInt(0, truePal.length-1)]
-    }
+
+    col = accentCol
+
     circs[i].show(col, i)
   }
 }

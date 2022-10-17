@@ -46,12 +46,12 @@ noiseScaleX = randomVal(0.001, 0.001)
 noiseScaleY = randomVal(0.001, 0.001)
 
 //Circle packing parameters
-numCircs = 3000
-padding = 2
+numCircs = randomInt(0, rows*0.5)
+padding = 10
 accentWigCircs = randomInt(200, w/2)
 noiseScaleWig = randomVal(0.001, 0.025)
 noiseScaleWidth = randomVal(0.01, 0.1)/rows
-maxCircR = randomInt(500, h)
+maxCircR = 150
 minCircR = 10
 circDens = 50
 
@@ -100,6 +100,8 @@ function draw() {
   //Sketch
   fullStack(rows)
   circles(rows)
+  cCirclePack()
+  showCircs()
 
   // cCirclePack()
   // showSquares()
