@@ -175,21 +175,6 @@ const retro = [
   "#9B72F2",
 ];
 
-const candy = [
-  '#C0FDFF',
-
-  "#FFCBF2",
-  "#F3C4FB",
-  "#ECBCFD",
-  "#E5B3FE",
-  "#E2AFFF", //
-  "#DEAAFF",
-  "#D8BBFF",
-  "#D0D1FF",
-  "#C8E7FF",
-];
-
-
 const pals = [
   monoCols,
   monoColsRed,

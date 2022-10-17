@@ -79,13 +79,19 @@ function setup() {
   satCenter = createVector(randomInt(w*0.25, w*0.75), randomInt(0, h))
   lumCenter = createVector(map(xShadow, 0, 1, 0, w), map(yShadow, 0, 1, 0, h))
 }
-
+seed = randomInt(1, 100000000000000000)
 function draw() {
+  noiseSeed(seed)
+  randomSeed(seed)
+  c.noiseSeed(seed)
+  c.randomSeed(seed)
+  p.noiseSeed(seed)
+  p.randomSeed(seed)
   //Basic prep
   translate(-w/2, -h/2)
   c.background(bgc)
   cRot = randomInt(0, 360)
-  cScl = map(sin(cRot/4), -1, 1, 1, 1.9)//1.9
+  cScl = map(sin(cRot/4), -1, 1, 1, 1.9)
   p.translate(w/2, h/2)
     p.rotate(cRot)
     p.scale(cScl)
