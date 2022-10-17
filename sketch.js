@@ -12,13 +12,14 @@ circs = []
 
 
 //Params
-nMode = 1//randomIntEven(1, 2)
-expo = randomVal(3, 5)
-satLevel = randomVal(1, 2)
-satRadius = randomInt(w, h)
+expo = 5//randomVal(3, 5)
+satLevel = 1//randomVal(1, 2)
+satRadius = randomInt(w*2, h)
+lumLevel = randomVal(1, 2)
+lumRadius = randomInt(w, h)
 xShadow = fxrand()
-yShadow = fxrand()
-contrast = randomVal(3, 5)
+yShadow = fxrand()*0.5
+contrast = randomVal(5, 8)
 flipped = randomIntEven(0, 3)
 maxCent = randomInt(5, 100)
 accExpo = 0.5
@@ -26,8 +27,8 @@ accExpo = 0.5
 
 //Stack parameters
 colNums = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, ]
-minCols = 1
-maxCols = 50
+minCols = 2
+maxCols = 100
 rows = randomInt(3, 40)
 maxRot = map_range(rows, 3, 40, 3, 0.25)
 rotInc = maxRot//randomVal(0, maxRot)
@@ -69,6 +70,7 @@ function setup() {
   c.willReadFrequently = true
 
   satCenter = createVector(randomInt(w*0.25, w*0.75), randomInt(0, h))
+  lumCenter = createVector(map(xShadow, 0, 1, 0, w), map(yShadow, 0, 1, 0, h))
 }
 
 function draw() {
@@ -77,10 +79,10 @@ function draw() {
   c.background(bgc)
   cRot = randomInt(0, 360)
   cScl = map(sin(cRot/4), -1, 1, 1, 1.75)
-  c.translate(w/2, h/2)
-    c.rotate(cRot)
-    c.scale(cScl)
-    c.translate(-w/2, -h/2)
+  p.translate(w/2, h/2)
+    p.rotate(cRot)
+    p.scale(cScl)
+    p.translate(-w/2, -h/2)
 
   //Sketch
   fullStack(rows)
@@ -92,7 +94,13 @@ function draw() {
   //debug c layer
   // p.stroke('red')
   // gradLine(w/2, 0, w/2, h, 100, randomVal(0.25, 4))
-  p.copy(c, 0, 0, w, h, Math.floor(marg), Math.floor(marg), Math.floor(w-(marg*2)), Math.floor(h-(marg*2)))
+  //p.copy(c, 0, 0, w, h, Math.floor(marg), Math.floor(marg), Math.floor(w-(marg*2)), Math.floor(h-(marg*2)))
+  p.copy(c, 0, 0, w, h, 0, 0, w, h)
+  // p.noFill()
+  // p.stroke('white')
+  // p.strokeWeight(10)
+  // //p.rotate(cRot)
+  // p.circle(lumCenter.x, lumCenter.y, 200)
   //gradLine(w/2, 0, w/2, h, 100, 0.5)
 
   //Post processing

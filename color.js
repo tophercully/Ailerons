@@ -77,6 +77,12 @@ const monoComps = [
 //Palettes
 //Always include frameCol instead of black or white so our colors don't blend into bgc
 const monoCols = [
+  'red', //Crimson
+  "#1ea5e8", //Ice-blue
+  "#FF731D", //Tangerine
+  "#005BDA", //Ultramarine
+  '#058c42', // Forest
+
   "#f8f9fa",
   "#e9ecef",
   "#dee2e6",
@@ -90,6 +96,9 @@ const monoCols = [
 ];
 
 const monoColsRed = [
+  "#1ea5e8",
+  "#5dadde",
+
   "#ffba08",
   "#faa307",
   "#f48c06",
@@ -103,19 +112,24 @@ const monoColsRed = [
 ];
 
 const monoColsGreen = [
-  "#10451d",
-  "#155d27",
-  "#1a7431",
-  "#208b3a",
-  "#25a244", //
-  "#2dc653",
-  "#4ad66d",
-  "#6ede8a",
+  "#ff7096",
+  '#9c6644',
+  '#D93B2A',
+  '#EC8A12',
+
+  "#dad7cd",
+  "#a3b18a",
+  "#588157",
+  "#3a5a40",
+  "#344e41", //
   frameCol,
-  "#2A2930",
 ];
 
 const monoColsBlue = [
+  'red',
+  "#d64b00",
+  "#FF731D",
+
   "#023e8a",
   "#0077b6",
   "#0096c7",
@@ -128,20 +142,11 @@ const monoColsBlue = [
   "#2A2930",
 ];
 
-const monoColsTan = [
-  "#EDC4B3",
-  "#E6B8A2",
-  "#DEAB90",
-  "#D69F7E",
-  "#CD9777", //
-  "#C38E70",
-  "#B07D62",
-  "#9D6B53",
-  frameCol,
-  "#8A5A44",
-];
-
 const blush = [
+  '#058c42',
+  '#D7AF61',
+  'black',
+
   "#590d22",
   "#800F2F",
   "#A4133C",
@@ -156,6 +161,10 @@ const blush = [
 ];
 
 const retro = [
+  'red',
+  "#d64b00",
+  "#FF731D",
+
   "#FFF7E9",
   "#5F9DF7",
   "#1746A2",
@@ -166,12 +175,26 @@ const retro = [
   "#9B72F2",
 ];
 
+const candy = [
+  '#C0FDFF',
+
+  "#FFCBF2",
+  "#F3C4FB",
+  "#ECBCFD",
+  "#E5B3FE",
+  "#E2AFFF", //
+  "#DEAAFF",
+  "#D8BBFF",
+  "#D0D1FF",
+  "#C8E7FF",
+];
+
+
 const pals = [
   monoCols,
   monoColsRed,
   monoColsGreen,
   monoColsBlue,
-  monoColsTan,
   blush,
   retro
 ];
@@ -192,21 +215,39 @@ const palNames = [
 ];
 
 //Palette parameters
-palNum = randomInt(0, pals.length);
-pal = pals[palNum];
+palNum = randomInt(0, pals.length-1);
+prePal = pals[palNum];
 palName = palNames[palNum];
 if(palNum == 0) {
-  accentCol = monoComps[randomInt(0, monoComps.length)]
-} else if(palNum == 1 || palNum == 4) {
-  accentCol = redComps[randomInt(0, redComps.length)]
+  //MonoChrome
+  n = 4
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
+} else if(palNum == 1) {
+  //Red
+  n = 2
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 2) {
-  accentCol = greenComps[randomInt(0, greenComps.length)]
-} else if(palNum == 3 || palNum == 4) {
-  accentCol = blueComps[randomInt(0, blueComps.length)]
+  //Green
+  n = 4
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
+} else if(palNum == 3) {
+  //Blue
+  n = 3
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
+} else if(palNum == 4) {
+  //Blush
+  n = 3
+  accentCol = prePal[randomInt(n-1, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 5) {
-  accentCol = purpleComps[randomInt(0, greenComps.length)]
-} else if(palNum == 6) {
-  accentCol = "#FF731D"
+  //Retro
+  n = 3
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
 }
 
 
@@ -222,7 +263,7 @@ coolTemp = 5000;
 warmTemp = 8000;
 
 //Increase color variation by 5x-ing our palette size and making slight adjustments to each copy
-for (let i = 0; i < pal.length; i++) {
+for (let i = 0; i < pal.length-1; i++) {
   lighterPal[i] = chroma(pal[i]).brighten(0.35).hex();
   darkerPal[i] = chroma(pal[i]).darken(0.35).hex();
   warmerPal[i] = chroma
