@@ -200,32 +200,38 @@ palName = palNames[palNum];
 if(palNum == 0) {
   //MonoChrome
   n = 5
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 1) {
   //Red
   n = 2
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 2) {
   //Green
   n = 4
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 3) {
   //Blue
   n = 3
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 4) {
   //Blush
   n = 3
-  accentCol = prePal[randomInt(n-1, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 5) {
   //Retro
   n = 3
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 }
 
