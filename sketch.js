@@ -55,7 +55,7 @@ if(nMono < 0.1) {
 
 window.$fxhashFeatures = {
   "Palette": palName,
-  "Accent Variant": acc,
+  "Accent Variant": acc+1,
   "Contrast": Math.round(map_range(contrast, 5, 8, 1, 10)),
   "Diffusion": Math.round(map_range(expo, 7, 3, 0, 10))
 }
