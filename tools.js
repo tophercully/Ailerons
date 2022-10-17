@@ -1,7 +1,7 @@
 function randomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(fxrand() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  return Math.floor(fxrand() * (max - min + 1) + min); // The maximum is exclusive and the minimum is inclusive
 }
 
 function randomIntEven(min, max) {
@@ -19,7 +19,7 @@ function map_range(value, low1, high1, low2, high2) {
 }
 
 function shuff(array) {
-  let currentIndex = array.length,
+  let currentIndex = array.length-1,
     randomIndex;
 
   while (currentIndex != 0) {
@@ -154,7 +154,7 @@ function stack(y, stackHeight, rot, cols) {
     if(x < maxX && x > minX) {
       col = accentCol
     } else {
-      col = truePal[randomInt(0, truePal.length)]
+      col = truePal[randomInt(0, truePal.length-1)]
     }
     c.noStroke()
 
@@ -199,9 +199,9 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
         accentY = randomVal(-rectHeight/2, rectHeight/2)
         accentX = randomVal(-rectWidth/2, rectWidth/2)
         alph = randomVal(0.2, 0.6)
-        c.stroke(chroma(monoCols[randomInt(5, monoCols.length)]).alpha(alph).hex())
+        c.stroke(chroma(monoCols[randomInt(5, monoCols.length-1)]).alpha(alph).hex())
 
-        //c.stroke(truePal[randomInt(0, truePal.length)])
+        //c.stroke(truePal[randomInt(0, truePal.length-1)])
         gradLine(-rectWidth/2, accentY, rectWidth/2, accentY, randomVal(0.25, 1), randomVal(0.5, 4))
         gradLine(accentX, -rectHeight/2, accentX, rectHeight/2, randomVal(0.25, 1), randomVal(0.5, 4))
       }
@@ -258,7 +258,7 @@ tries = 0
     thisC = new Circ(randomVal(0, w), randomVal(0, h), randomVal(minR, maxR))
     //set overlap to default false
     valid = true
-    for(let j = 0; j < circs.length; j++) {
+    for(let j = 0; j < circs.length-1; j++) {
       //reference past circles
       prevCirc = createVector(circs[j].x, circs[j].y)
       thisCirc = createVector(thisC.x, thisC.y)
@@ -290,7 +290,7 @@ tries = 0
 }
 
 function showCircs() {
-  for(let i = 0; i < circs.length; i++) {
+  for(let i = 0; i < circs.length-1; i++) {
     wig = accentWigCircs
     wiggle = map(noise(circs[i].y*noiseScaleWig), 0, 1, -wig, wig)
     center = w/2 + wiggle
@@ -300,14 +300,14 @@ function showCircs() {
     if(circs[i].x < maxX && circs[i].x > minX) {
       col = accentCol
     } else {
-      col = truePal[randomInt(0, truePal.length)]
+      col = truePal[randomInt(0, truePal.length-1)]
     }
     circs[i].show(col, i)
   }
 }
 
 function showSquares() {
-  for(let i = 0; i < circs.length; i++) {
+  for(let i = 0; i < circs.length-1; i++) {
     wig = accentWigCircs
     wiggle = map(noise(circs[i].y*noiseScaleWig), 0, 1, -wig, wig)
     center = w/2 + wiggle
@@ -317,7 +317,7 @@ function showSquares() {
     if(circs[i].x < maxX && circs[i].x > minX) {
       col = accentCol
     } else {
-      col = truePal[randomInt(0, truePal.length)]
+      col = truePal[randomInt(0, truePal.length-1)]
     }
     circs[i].showSquares(col)
   }

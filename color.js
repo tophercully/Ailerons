@@ -115,6 +115,7 @@ const monoColsGreen = [
   "#ff7096",
   '#9c6644',
   '#D93B2A',
+  '#EC8A12',
 
   "#dad7cd",
   "#a3b18a",
@@ -143,6 +144,7 @@ const monoColsBlue = [
 
 const blush = [
   '#058c42',
+  '#D7AF61',
 
   "#590d22",
   "#800F2F",
@@ -197,39 +199,39 @@ const palNames = [
 ];
 
 //Palette parameters
-palNum = randomInt(0, pals.length);
+palNum = randomInt(0, pals.length-1);
 prePal = pals[palNum];
 palName = palNames[palNum];
 if(palNum == 0) {
   //MonoChrome
   n = 4
-  accentCol = prePal[randomInt(0, n)]
-  pal = prePal.slice(n+1, prePal.length)
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 1) {
   //Red
   n = 2
-  accentCol = prePal[randomInt(0, n)]
-  pal = prePal.slice(n+1, prePal.length)
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 2) {
   //Green
-  n = 3
-  accentCol = prePal[randomInt(0, n)]
-  pal = prePal.slice(n+1, prePal.length)
+  n = 4
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 3) {
   //Blue
   n = 3
-  accentCol = prePal[randomInt(0, n)]
-  pal = prePal.slice(n+1, prePal.length)
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 4) {
   //Blush
-  n = 1
-  accentCol = prePal[randomInt(0, n)]
-  pal = prePal.slice(n+1, prePal.length)
+  n = 2
+  accentCol = prePal[randomInt(n-1, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 5) {
   //Retro
   n = 3
-  accentCol = prePal[randomInt(0, n)]
-  pal = prePal.slice(n+1, prePal.length)
+  accentCol = prePal[randomInt(0, n-1)]
+  pal = prePal.slice(n, prePal.length-1)
 }
 
 
@@ -245,7 +247,7 @@ coolTemp = 5000;
 warmTemp = 8000;
 
 //Increase color variation by 5x-ing our palette size and making slight adjustments to each copy
-for (let i = 0; i < pal.length; i++) {
+for (let i = 0; i < pal.length-1; i++) {
   lighterPal[i] = chroma(pal[i]).brighten(0.35).hex();
   darkerPal[i] = chroma(pal[i]).darken(0.35).hex();
   warmerPal[i] = chroma
