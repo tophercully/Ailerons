@@ -20,7 +20,7 @@ lumLevel = 2.5
 lumRadius = randomInt(w, h)
 xShadow = fxrand()
 yShadow = fxrand()*0.5
-contrast = randomVal(3, 5)
+contrast = 10//randomVal(3, 5)
 flipped = randomIntEven(0, 3)
 maxCent = randomInt(5, 100)
 accExpo = 0.5
@@ -78,12 +78,12 @@ function draw() {
   //Basic prep
   translate(-w/2, -h/2)
   c.background(bgc)
-  cRot = 45//randomInt(0, 360)
+  cRot = randomInt(0, 360)
   cScl = map(sin(cRot/4), -1, 1, 1, 1.75)
-  c.translate(w/2, h/2)
-    c.rotate(cRot)
-    c.scale(cScl)
-    c.translate(-w/2, -h/2)
+  p.translate(w/2, h/2)
+    p.rotate(cRot)
+    p.scale(cScl)
+    p.translate(-w/2, -h/2)
 
   //Sketch
   fullStack(rows)
@@ -95,7 +95,14 @@ function draw() {
   //debug c layer
   // p.stroke('red')
   // gradLine(w/2, 0, w/2, h, 100, randomVal(0.25, 4))
-  p.copy(c, 0, 0, w, h, Math.floor(marg), Math.floor(marg), Math.floor(w-(marg*2)), Math.floor(h-(marg*2)))
+  //p.copy(c, 0, 0, w, h, Math.floor(marg), Math.floor(marg), Math.floor(w-(marg*2)), Math.floor(h-(marg*2)))
+  p.copy(c, 0, 0, w, h, 0, 0, w, h)
+  p.noFill()
+  p.stroke('white')
+  p.strokeWeight(10)
+  p.rotate(cRot)
+  p.circle(lumCenter.x, lumCenter.y, 200)
+  //gradLine(w/2, 0, w/2, h, 100, 0.5)
 
   //Post processing
   copy(p, 0, 0, w, h, 0, 0, w, h)

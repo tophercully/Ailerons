@@ -218,8 +218,10 @@ function cStackCircle(x, y, circleSize, dens, color, raised) {
   sat = map(satDist, 0, satRadius, 0, satLevel)
   c.push()
   c.translate(x, y)
+
   xOff = map(xShadow, 0, 1, -circleSize*0.333, circleSize*0.333)//randomVal(-circleSize/3, circleSize/3)
   yOff = map(yShadow, 0, 1, -circleSize*0.333, circleSize*0.333)//randomVal(-circleSize/3, circleSize/3)
+
   for(let i = 0; i < dens; i++) {
 
     dark = map(i, 0, dens, contrast, 0)
