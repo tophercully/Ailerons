@@ -175,21 +175,6 @@ const retro = [
   "#9B72F2",
 ];
 
-const candy = [
-  '#C0FDFF',
-
-  "#FFCBF2",
-  "#F3C4FB",
-  "#ECBCFD",
-  "#E5B3FE",
-  "#E2AFFF", //
-  "#DEAAFF",
-  "#D8BBFF",
-  "#D0D1FF",
-  "#C8E7FF",
-];
-
-
 const pals = [
   monoCols,
   monoColsRed,
@@ -200,18 +185,12 @@ const pals = [
 ];
 
 const palNames = [
-  "Source",
-  "Commander Shepard",
-  "Toy Blocks",
-  "McWoot",
-  "Soft",
-  "Jazzy",
-  "Ceramic",
-  "Oil Pastel",
-  "McNay",
-  "O'Keefe",
-  "Flower Market",
-  "Oil Paint"
+  "MonoChrome+Accent",
+  "Magma Stream",
+  "Earth",
+  "Ice and Fire",
+  "Blush",
+  "Retro"
 ];
 
 //Palette parameters
@@ -221,32 +200,38 @@ palName = palNames[palNum];
 if(palNum == 0) {
   //MonoChrome
   n = 5
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 1) {
   //Red
   n = 2
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 2) {
   //Green
   n = 4
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 3) {
   //Blue
   n = 3
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 4) {
   //Blush
   n = 3
-  accentCol = prePal[randomInt(n-1, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 5) {
   //Retro
   n = 3
-  accentCol = prePal[randomInt(0, n-1)]
+  acc = randomInt(0, n-1)
+  accentCol = prePal[acc]
   pal = prePal.slice(n, prePal.length-1)
 }
 

@@ -11,6 +11,7 @@ uniform vec2 u_resolution;
 uniform float seed;
 uniform float marg;
 uniform vec3 bgc;
+uniform bool mono;
 
 float map(float value, float inMin, float inMax, float outMin, float outMax) {
   return outMin + (outMax - outMin) * (value - inMin) / (inMax - inMin);
@@ -75,6 +76,13 @@ void main() {
     color = vec3(bgc.r+(noiseGray*0.25), bgc.g+(noiseGray*0.25), bgc.b+(noiseGray*0.25));
   }
 
+  if(mono == true) {
+  float avg = (color.r + color.g + color.b)/3.0;
+  final = vec3(avg);
+  } else {
+  final = color;
+  }
 
-  gl_FragColor = vec4(color, 1.0);
+
+  gl_FragColor = vec4(final, 1.0);
 }
