@@ -46,19 +46,26 @@ minCircR = 10
 circDens = 100
 
 nMono = fxrand()
+idents = [
+  ' A', ' B', ' C', ' D', ' E'
+]
+accIdent = idents[acc]
+
 if(nMono < 0.1) {
   mono = true
   palName = 'MonoChrome'
+  accIdent = ''
 } else {
   mono = false
 }
 
+
 window.$fxhashFeatures = {
-  "Palette": palName,
-  "Accent Variant": acc+1,
+  "Palette": palName + accIdent,
   "Contrast": Math.round(map_range(contrast, 5, 8, 1, 10)),
   "Diffusion": Math.round(map_range(expo, 7, 3, 0, 10))
 }
+console.log(palName + accIdent)
 
 function setup() {
   createCanvas(w, h, WEBGL);
