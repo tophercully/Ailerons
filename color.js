@@ -197,7 +197,7 @@ const palNames = [
 ];
 
 //Palette parameters
-palNum = 2//randomInt(0, pals.length);
+palNum = randomInt(0, pals.length);
 prePal = pals[palNum];
 palName = palNames[palNum];
 if(palNum == 0) {
