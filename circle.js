@@ -15,21 +15,4 @@ class Circ {
     this.raised = map(num, 0, 2000, this.minRaise, this.maxRaise)
     cStackCircle(this.x, this.y, this.r, this.num, col, this.raised)
   }
-
-  showSquares(col) {
-    c.fill(col)
-    c.noStroke()
-    num = 50//randomInt(1, 10)
-    cStackRect(this.x, this.y, this.r, this.r, num, col)
-  }
-
-  showShadow() {
-    s.fill('white')
-    s.noStroke()
-    s.drawingContext.shadowOffsetX = shadOffX;
-    s.drawingContext.shadowOffsetY = shadOffY;
-    s.drawingContext.shadowBlur = shadBlur;
-    s.drawingContext.shadowColor = '#252525';
-    sBlob(this.x, this.y, this.r)
-  }
 }

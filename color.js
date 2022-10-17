@@ -185,18 +185,12 @@ const pals = [
 ];
 
 const palNames = [
-  "Source",
-  "Commander Shepard",
-  "Toy Blocks",
-  "McWoot",
-  "Soft",
-  "Jazzy",
-  "Ceramic",
-  "Oil Pastel",
-  "McNay",
-  "O'Keefe",
-  "Flower Market",
-  "Oil Paint"
+  "MonoChrome+Accent",
+  "Magma Stream",
+  "Earth",
+  "Ice and Fire",
+  "Blush",
+  "Retro"
 ];
 
 //Palette parameters

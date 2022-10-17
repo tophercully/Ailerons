@@ -55,6 +55,14 @@ maxCircR = 150
 minCircR = 10
 circDens = 50
 
+nMono = fxrand()
+if(nMono < 0.1) {
+  mono = true
+  palName = MonoChrome
+} else {
+  mono = false
+}
+
 window.$fxhashFeatures = {
   "Palette": palName,
   "Contrast": Math.round(map_range(contrast, 5, 8, 1, 10)),
@@ -127,6 +135,7 @@ function draw() {
   //shade.setUniform("p2", p2);
   shade.setUniform("seed", randomVal(0, 10));
   shade.setUniform("marg", map(marg, 0, w, 0, 1));
+  shade.setUniform("mono", mono)
   shade.setUniform("bgc", [
     bgc.levels[0] / 255,
     bgc.levels[1] / 255,

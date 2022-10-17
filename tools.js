@@ -304,22 +304,6 @@ function showCircs() {
   }
 }
 
-function showSquares() {
-  for(let i = 0; i < circs.length-1; i++) {
-    wig = accentWigCircs
-    wiggle = map(noise(circs[i].y*noiseScaleWig), 0, 1, -wig, wig)
-    center = w/2 + wiggle
-    mod = map(noise(circs[i].y*noiseScaleWidth), 0, 1, 0, 200)
-    minX = center-mod
-    maxX = center+mod
-    if(circs[i].x < maxX && circs[i].x > minX) {
-      col = accentCol
-    } else {
-      col = truePal[randomInt(0, truePal.length-1)]
-    }
-    circs[i].showSquares(col)
-  }
-}
 
 function gradLine(xa, ya, xb, yb, wt, xp) {
   start = createVector(xa, ya)
