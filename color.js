@@ -145,6 +145,7 @@ const monoColsBlue = [
 const blush = [
   '#058c42',
   '#D7AF61',
+  'black',
 
   "#590d22",
   "#800F2F",
@@ -173,6 +174,21 @@ const retro = [
   "#7943E6",
   "#9B72F2",
 ];
+
+const candy = [
+  '#C0FDFF',
+
+  "#FFCBF2",
+  "#F3C4FB",
+  "#ECBCFD",
+  "#E5B3FE",
+  "#E2AFFF", //
+  "#DEAAFF",
+  "#D8BBFF",
+  "#D0D1FF",
+  "#C8E7FF",
+];
+
 
 const pals = [
   monoCols,
@@ -224,7 +240,7 @@ if(palNum == 0) {
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 4) {
   //Blush
-  n = 2
+  n = 3
   accentCol = prePal[randomInt(n-1, n-1)]
   pal = prePal.slice(n, prePal.length-1)
 } else if(palNum == 5) {
