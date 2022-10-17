@@ -112,18 +112,16 @@ const monoColsRed = [
 ];
 
 const monoColsGreen = [
-  "#d9479c",
+  "#ff7096",
+  '#9c6644',
+  '#D93B2A',
 
-  "#10451d",
-  "#155d27",
-  "#1a7431",
-  "#208b3a",
-  "#25a244", //
-  "#2dc653",
-  "#4ad66d",
-  "#6ede8a",
+  "#dad7cd",
+  "#a3b18a",
+  "#588157",
+  "#3a5a40",
+  "#344e41", //
   frameCol,
-  "#2A2930",
 ];
 
 const monoColsBlue = [
@@ -199,7 +197,7 @@ const palNames = [
 ];
 
 //Palette parameters
-palNum = randomInt(0, pals.length);
+palNum = 2//randomInt(0, pals.length);
 prePal = pals[palNum];
 palName = palNames[palNum];
 if(palNum == 0) {
@@ -214,7 +212,7 @@ if(palNum == 0) {
   pal = prePal.slice(n+1, prePal.length)
 } else if(palNum == 2) {
   //Green
-  n = 1
+  n = 3
   accentCol = prePal[randomInt(0, n)]
   pal = prePal.slice(n+1, prePal.length)
 } else if(palNum == 3) {

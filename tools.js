@@ -126,7 +126,7 @@ function circles(numRows) {
       x = randomVal(0, w)
       y = i*stackHeight
       c.push()
-      raised = randomInt(10, 50)
+      raised = randomInt(10, 400)
       cStackCircle(x, y, randomVal(10, 150), circDens, col, raised)
       c.pop()
     }
@@ -213,9 +213,11 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
 }
 
 function cStackCircle(x, y, circleSize, dens, color, raised) {
-  satCheck = createVector(x, y)
-  satDist = satCheck.dist(satCenter)
+  check = createVector(x, y)
+  satDist = check.dist(satCenter)
+  lumDist = check.dist(lumCenter)
   sat = map(satDist, 0, satRadius, 0, satLevel)
+  lum = map(lumDist, 0, lumRadius, lumLevel, 0)
   c.push()
   c.translate(x, y)
 
@@ -228,7 +230,7 @@ function cStackCircle(x, y, circleSize, dens, color, raised) {
     sizeMod = map(pow(i, expo), 0, pow(dens, expo), 1, 0)
     xMod = map(pow(i, expo), 0, pow(dens, expo), 0, xOff)
     yMod = map(pow(i, expo), 0, pow(dens, expo), 0, yOff)
-    c.fill(chroma(col).desaturate(sat).darken(dark).hex())
+    c.fill(chroma(col).desaturate(sat).brighten(lum).darken(dark).hex())
     c.push()
     if(i == 0) {
       c.drawingContext.shadowOffsetX = map(xShadow, 1, 0, -raised, raised);
