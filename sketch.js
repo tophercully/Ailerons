@@ -79,7 +79,7 @@ function draw() {
   //Basic prep
   translate(-w/2, -h/2)
   c.background(bgc)
-  cRot = 45//randomInt(0, 360)
+  cRot = randomInt(0, 360)
   cScl = map(sin(cRot/4), -1, 1, 1, 1.9)
   p.translate(w/2, h/2)
     p.rotate(cRot)
