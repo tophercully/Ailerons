@@ -12,7 +12,7 @@ circs = []
 
 
 //Params
-expo = 5//randomVal(3, 5)
+expo = randomVal(3, 5)
 satLevel = 1//randomVal(1, 2)
 satRadius = randomInt(w*2, h)
 lumLevel = randomVal(1, 2)
