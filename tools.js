@@ -59,7 +59,7 @@ function setLineDash(list) {
 
 function keyTyped() {
   if (key === "s" || key === "S") {
-    save("img.png");
+    save("Ailerons.png");
   }
 }
 
@@ -187,7 +187,7 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
     c.fill(trueCol)
     if(i == 0) {
       c.stroke('black')
-      c.strokeWeight(randomVal(1, 5))
+      c.strokeWeight(randomVal(minStroke, maxStroke))
     } else {
       c.noStroke()
     }

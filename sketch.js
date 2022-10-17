@@ -1,6 +1,6 @@
 w = 1200
 h = 1500
-marg = w*0.119
+marg = w* 0.025//0.125
 
 let shade;
 function preload() {
@@ -12,8 +12,8 @@ circs = []
 
 
 //Params
-expo = randomVal(3, 5)
-satLevel = 1//randomVal(1, 2)
+expo = randomVal(3, 7)
+satLevel = 2//randomVal(1, 2)
 satRadius = randomInt(w*2, h)
 lumLevel = randomVal(1, 2)
 lumRadius = randomInt(w, h)
@@ -36,6 +36,8 @@ rotNoiseScale = randomVal(0.01, 0.5)
 //accentCol = 'red'//truePal[0]
 accentChance = 0.5
 rectDens = 100
+minStroke = 0
+maxStroke = 0
 
 //Sampler parameters
 sz = 20//randomInt(3, 20)
@@ -77,8 +79,8 @@ function draw() {
   //Basic prep
   translate(-w/2, -h/2)
   c.background(bgc)
-  cRot = randomInt(0, 360)
-  cScl = map(sin(cRot/4), -1, 1, 1, 1.75)
+  cRot = 45//randomInt(0, 360)
+  cScl = map(sin(cRot/4), -1, 1, 1, 1.9)
   p.translate(w/2, h/2)
     p.rotate(cRot)
     p.scale(cScl)
@@ -111,6 +113,7 @@ function draw() {
   shade.setUniform("p", p);
   //shade.setUniform("p2", p2);
   shade.setUniform("seed", randomVal(0, 10));
+  shade.setUniform("marg", map(marg, 0, w, 0, 1));
   shade.setUniform("bgc", [
     bgc.levels[0] / 255,
     bgc.levels[1] / 255,
