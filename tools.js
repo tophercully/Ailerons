@@ -70,6 +70,7 @@ function fullStack(numRows) {
   for(let i = 0; i < numRows; i++) {
     stackHeight = h/numRows
     y = (stackHeight*i)+(stackHeight/2)
+    rotInc = randomVal(0, maxRot)
     rot += plusOrMin(rotInc)
     cols = randomInt(minCols, maxCols)
     stack(y, randomVal(stackHeight, stackHeight*10), rot, cols)

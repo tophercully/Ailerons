@@ -12,7 +12,7 @@ circs = []
 
 //Params
 expo = randomVal(3, 7)
-satLevel = 2//randomVal(1, 2)
+satLevel = 2
 satRadius = randomInt(w*2, h)
 lumLevel = randomVal(1, 2)
 lumRadius = randomInt(w, h)
@@ -30,7 +30,7 @@ minCols = 2
 maxCols = 100
 rows = randomInt(3, 40)
 maxRot = map_range(rows, 3, 40, 3, 0.25)
-rotInc = maxRot//randomVal(0, maxRot)
+
 rotNoiseScale = randomVal(0.01, 0.5)
 accentChance = 0.5
 rectDens = 100
@@ -62,6 +62,7 @@ if(nMono < 0.1) {
 
 window.$fxhashFeatures = {
   "Palette": palName + accIdent,
+  "Background": bgName,
   "Contrast": Math.round(map_range(contrast, 5, 8, 1, 10)),
   "Diffusion": Math.round(map_range(expo, 7, 3, 0, 10))
 }
