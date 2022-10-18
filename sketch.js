@@ -18,7 +18,7 @@ lumLevel = randomVal(1, 2)
 lumRadius = randomInt(w, h)
 xShadow = fxrand()
 yShadow = fxrand()*0.5
-contrast = randomVal(5, 8)
+contrast = randomVal(5, 7)
 flipped = randomIntEven(0, 3)
 maxCent = randomInt(5, 100)
 accExpo = 0.5
@@ -63,14 +63,19 @@ if(nMono < 0.1) {
 window.$fxhashFeatures = {
   "Palette": palName + accIdent,
   "Background": bgName,
-  "Contrast": Math.round(map_range(contrast, 5, 8, 1, 10)),
+  "Contrast": Math.round(map_range(contrast, 5, 7, 1, 10)),
   "Diffusion": Math.round(map_range(expo, 7, 3, 0, 10))
 }
 console.log(palName + accIdent)
 
 function setup() {
   createCanvas(w, h, WEBGL);
-  pixelDensity(3)
+  if(isFxpreview == true) {
+    pixelDensity(1)
+  } else {
+    pixelDensity(3)
+  }
+
   p = createGraphics(w, h)
   c = createGraphics(w, h)
   angleMode(DEGREES)
@@ -128,4 +133,6 @@ function draw() {
   ]);
 
   rect(0, 0, w, h)
+
+  fxpreview()
 }
