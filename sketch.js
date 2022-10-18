@@ -20,7 +20,7 @@ xShadow = fxrand()
 yShadow = fxrand()*0.5
 contrast = randomVal(5, 7)
 flipped = randomIntEven(0, 3)
-maxCent = randomInt(5, 100)
+maxCent = randomInt(5, 40)
 accExpo = 0.5
 
 
@@ -32,7 +32,6 @@ rows = randomInt(3, 30)
 maxRot = map_range(rows, 3, 30, 3, 0.25)
 
 rotNoiseScale = randomVal(0.01, 0.5)
-accentChance = 0.5
 rectDens = 50
 
 //Circle packing parameters
