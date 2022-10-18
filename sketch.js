@@ -70,7 +70,7 @@ console.log(palName + accIdent)
 
 function setup() {
   createCanvas(w, h, WEBGL);
-  pixelDensity(2)
+  pixelDensity(3)
   p = createGraphics(w, h)
   c = createGraphics(w, h)
   angleMode(DEGREES)
