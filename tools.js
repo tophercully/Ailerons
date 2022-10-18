@@ -138,7 +138,7 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
   c.translate(x, y)
   xOff = map(xShadow, 0, 1, -rectWidth/2, rectWidth/2)//randomVal(-rectWidth/2, rectWidth/2)
   yOff = map(yShadow, 0, 1, -rectHeight/2, rectHeight/2)//randomVal(-rectHeight/2, rectHeight/2)
-  dens = Math.floor(rectWidth*0.75)
+  dens = Math.floor(rectWidth*0.7)
   for(let i = 0; i < dens; i++) {
     offset = 0.03
     dark = map(i, 0, dens, contrast, 0) +randomVal(-offset, offset)
