@@ -120,8 +120,8 @@ function stack(y, stackHeight, rot, cols) {
       col = truePal[randomInt(0, truePal.length-1)]
     }
     c.noStroke()
-
-    cStackRect(x, y, stackWidth+mod, stackHeight, rectDens, col)
+    thisDens = (stackWidth+mod)*0.7//map(stackWidth+mod, 0, w, 50, 100)
+    cStackRect(x, y, stackWidth+mod, stackHeight, thisDens, col)
 
   }
 
@@ -138,7 +138,6 @@ function cStackRect(x, y, rectWidth, rectHeight, dens, color) {
   c.translate(x, y)
   xOff = map(xShadow, 0, 1, -rectWidth/2, rectWidth/2)//randomVal(-rectWidth/2, rectWidth/2)
   yOff = map(yShadow, 0, 1, -rectHeight/2, rectHeight/2)//randomVal(-rectHeight/2, rectHeight/2)
-
   for(let i = 0; i < dens; i++) {
     offset = 0.03
     dark = map(i, 0, dens, contrast, 0) +randomVal(-offset, offset)

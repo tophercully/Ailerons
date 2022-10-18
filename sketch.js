@@ -27,13 +27,13 @@ accExpo = 0.5
 //Stack parameters
 colNums = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, ]
 minCols = 2
-maxCols = 100
-rows = randomInt(3, 40)
-maxRot = map_range(rows, 3, 40, 3, 0.25)
+maxCols = 50
+rows = randomInt(3, 30)
+maxRot = map_range(rows, 3, 30, 3, 0.25)
 
 rotNoiseScale = randomVal(0.01, 0.5)
 accentChance = 0.5
-rectDens = 100
+rectDens = 50
 
 //Circle packing parameters
 numCircs = randomInt(0, rows*0.5)
@@ -43,7 +43,7 @@ noiseScaleWig = randomVal(0.001, 0.025)
 noiseScaleWidth = randomVal(0.01, 0.1)/rows
 maxCircR = 150
 minCircR = 10
-circDens = 100
+circDens = 50
 
 nMono = fxrand()
 idents = [
